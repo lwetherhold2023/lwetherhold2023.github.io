@@ -3,782 +3,676 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ZIP Launchpad Team Status Summary - October 4, 2025">
-    <title>ZIP Launchpad Team Status - October 4, 2025</title>
+    <title>ZIP Launchpad Team Status Summary - October 14, 2025</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #E2E7FD;
-            color: #263051;
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background-color: #E2E7FD; 
             line-height: 1.6;
-            padding: 20px;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background-color: white; 
+            border-radius: 10px; 
+            overflow: hidden; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
         }
-
-        .header {
-            background: linear-gradient(135deg, #263051 0%, #394260 100%);
-            color: #E2E7FD;
-            padding: 40px 30px;
-            text-align: center;
+        .header { 
+            background: linear-gradient(135deg, #263051 0%, #394260 100%); 
+            color: #E2E7FD; 
+            padding: 30px; 
+            text-align: center; 
         }
-
-        .header h1 {
-            font-size: 32px;
-            font-weight: 300;
-            margin-bottom: 10px;
+        .header h1 { 
+            margin: 0; 
+            font-size: 32px; 
+            font-weight: 300; 
         }
-
-        .header .subtitle {
-            font-size: 14px;
-            opacity: 0.8;
+        .header .subtitle { 
+            margin-top: 8px; 
+            font-size: 14px; 
+            opacity: 0.8; 
         }
-
-        .timestamp {
-            background-color: #C5CBEB;
-            padding: 15px 30px;
-            text-align: center;
-            font-size: 14px;
-            color: #263051;
-            border-bottom: 2px solid #5473C6;
+        .summary-stats { 
+            background-color: #C5CBEB; 
+            padding: 20px; 
+            display: flex; 
+            justify-content: space-around; 
+            flex-wrap: wrap; 
         }
-
-        .summary-stats {
-            background-color: #C5CBEB;
-            padding: 30px;
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
+        .stat-item { 
+            text-align: center; 
+            margin: 10px; 
         }
-
-        .stat-item {
-            text-align: center;
-            min-width: 120px;
+        .stat-number { 
+            font-size: 28px; 
+            font-weight: bold; 
+            color: #263051; 
         }
-
-        .stat-number {
-            font-size: 36px;
-            font-weight: bold;
-            color: #263051;
+        .stat-label { 
+            font-size: 12px; 
+            color: #394260; 
+            margin-top: 5px; 
+            text-transform: uppercase;
         }
-
-        .stat-label {
-            font-size: 14px;
-            color: #394260;
-            margin-top: 5px;
-        }
-
-        .toc {
-            background-color: #f8f9ff;
-            padding: 30px;
-            margin: 20px 30px;
-            border-radius: 8px;
-            border-left: 4px solid #5473C6;
-        }
-
-        .toc h2 {
-            color: #263051;
-            margin-bottom: 15px;
-            font-size: 22px;
-        }
-
-        .toc ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .toc li {
-            margin: 8px 0;
-        }
-
-        .toc a {
-            color: #3957A6;
-            text-decoration: none;
-            font-size: 16px;
-            transition: color 0.3s;
-        }
-
-        .toc a:hover {
-            color: #5473C6;
-            text-decoration: underline;
-        }
-
-        .alert-box {
-            background-color: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 20px;
-            margin: 20px 30px;
+        .alert-box { 
+            background-color: #fff3cd; 
+            border-left: 6px solid #ffc107; 
+            padding: 20px; 
+            margin: 20px 25px; 
             border-radius: 5px;
         }
-
-        .alert-box-critical {
-            background-color: #ffe6e6;
-            border-left: 4px solid #ff4444;
-            padding: 20px;
-            margin: 20px 30px;
+        .alert-box-critical { 
+            background-color: #ffe6e6; 
+            border-left: 6px solid #ff4444; 
+            padding: 20px; 
+            margin: 20px 25px; 
             border-radius: 5px;
         }
-
-        .alert-box strong {
-            display: block;
+        .alert-box h3 {
+            margin-top: 0;
             font-size: 18px;
-            margin-bottom: 10px;
         }
-
-        .alert-box ul {
-            margin-left: 20px;
-            margin-top: 10px;
+        .team-section { 
+            margin: 30px 0; 
         }
-
-        .team-section {
-            margin: 30px 0;
-            scroll-margin-top: 20px;
+        .team-header { 
+            background-color: #5473C6; 
+            color: white; 
+            padding: 15px 25px; 
+            font-size: 20px; 
+            font-weight: bold; 
         }
-
-        .team-header {
-            background-color: #5473C6;
-            color: white;
-            padding: 15px 30px;
-            font-size: 20px;
+        .team-header-alt { 
+            background-color: #3957A6; 
+            color: white; 
+            padding: 15px 25px; 
+            font-size: 20px; 
+            font-weight: bold; 
+        }
+        .team-header-alt2 { 
+            background-color: #394260; 
+            color: white; 
+            padding: 15px 25px; 
+            font-size: 20px; 
+            font-weight: bold; 
+        }
+        .startup-card { 
+            border-left: 4px solid #3957A6; 
+            margin: 20px 25px; 
+            padding: 20px; 
+            background-color: #f8f9ff; 
+            border-radius: 5px;
+        }
+        .startup-card-alt { 
+            border-left: 4px solid #5473C6; 
+            margin: 20px 25px; 
+            padding: 20px; 
+            background-color: #f0f5ff; 
+            border-radius: 5px;
+        }
+        .startup-card-alt2 { 
+            border-left: 4px solid #394260; 
+            margin: 20px 25px; 
+            padding: 20px; 
+            background-color: #f5f6ff; 
+            border-radius: 5px;
+        }
+        .startup-name { 
+            font-size: 20px; 
+            font-weight: bold; 
+            color: #263051; 
+            margin-bottom: 15px; 
+            border-bottom: 2px solid #C5CBEB;
+            padding-bottom: 10px;
+        }
+        .info-block { 
+            margin: 15px 0; 
+        }
+        .info-label { 
+            font-weight: bold; 
+            color: #394260; 
+            margin-bottom: 5px; 
+            font-size: 14px;
+        }
+        .blockers { 
+            background-color: #ffe6e6; 
+            border-left: 4px solid #ff4444; 
+            padding: 12px; 
+            margin: 10px 0; 
+            border-radius: 4px;
+        }
+        .blockers .info-label { 
+            color: #cc0000; 
+        }
+        .wins { 
+            background-color: #e6ffe6; 
+            border-left: 4px solid #00aa00; 
+            padding: 12px; 
+            margin: 10px 0; 
+            border-radius: 4px;
+        }
+        .wins .info-label { 
+            color: #006600; 
+        }
+        .deadlines { 
+            background-color: #fff3e6; 
+            border-left: 4px solid #ff8800; 
+            padding: 12px; 
+            margin: 10px 0; 
+            border-radius: 4px;
+        }
+        .deadlines .info-label { 
+            color: #cc6600; 
+        }
+        .support-needed { 
+            background-color: #e6f3ff; 
+            border-left: 4px solid #0066cc; 
+            padding: 12px; 
+            margin: 10px 0; 
+            border-radius: 4px;
+        }
+        .support-needed .info-label { 
+            color: #004499; 
+        }
+        .breakthrough { 
+            background-color: #e6fff0; 
+            border: 2px solid #00cc44; 
+            padding: 15px; 
+            margin: 10px 0; 
+            border-radius: 5px; 
             font-weight: bold;
         }
-
-        .team-header-alt {
-            background-color: #3957A6;
-            color: white;
-            padding: 15px 30px;
-            font-size: 20px;
-            font-weight: bold;
+        .action-items { 
+            background-color: #263051; 
+            color: #E2E7FD; 
+            padding: 30px; 
+            margin-top: 20px; 
         }
-
-        .team-header-alt2 {
-            background-color: #394260;
-            color: white;
-            padding: 15px 30px;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .member-section {
-            border-left: 4px solid #3957A6;
-            margin: 20px 30px;
-            padding: 20px;
-            background-color: #f8f9ff;
-            border-radius: 5px;
-        }
-
-        .member-section-alt {
-            border-left: 4px solid #5473C6;
-            margin: 20px 30px;
-            padding: 20px;
-            background-color: #f0f5ff;
-            border-radius: 5px;
-        }
-
-        .member-section-alt2 {
-            border-left: 4px solid #394260;
-            margin: 20px 30px;
-            padding: 20px;
-            background-color: #f5f6ff;
-            border-radius: 5px;
-        }
-
-        .member-name {
-            font-size: 20px;
-            font-weight: bold;
-            color: #263051;
-            margin-bottom: 15px;
-        }
-
-        .update-category {
-            margin: 15px 0;
-        }
-
-        .category-label {
-            font-weight: bold;
-            color: #394260;
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        .blockers {
-            background-color: #ffe6e6;
-            border-left: 4px solid #ff4444;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-        }
-
-        .blockers .category-label {
-            color: #cc0000;
-        }
-
-        .wins {
-            background-color: #e6ffe6;
-            border-left: 4px solid #00aa00;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-        }
-
-        .wins .category-label {
-            color: #006600;
-        }
-
-        .deadlines {
-            background-color: #fff3e6;
-            border-left: 4px solid #ff8800;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-        }
-
-        .deadlines .category-label {
-            color: #cc6600;
-        }
-
-        .support-needed {
-            background-color: #e6f3ff;
-            border-left: 4px solid #0066cc;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-        }
-
-        .support-needed .category-label {
-            color: #004499;
-        }
-
-        .pattern-alert {
-            background-color: #fff0f5;
-            border-left: 4px solid #ff1493;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-        }
-
-        .pattern-alert .category-label {
-            color: #c71585;
-        }
-
-        .action-items {
-            background-color: #263051;
-            color: #E2E7FD;
-            padding: 30px;
-            margin-top: 30px;
-        }
-
-        .action-items h2 {
-            color: #C5CBEB;
-            margin-bottom: 20px;
+        .action-items h2 { 
+            margin-top: 0; 
+            color: #C5CBEB; 
             font-size: 24px;
         }
-
-        .action-item {
-            margin: 15px 0;
-            padding: 10px 0;
-            border-bottom: 1px solid #394260;
+        .action-item { 
+            margin: 15px 0; 
+            padding: 12px 0; 
+            border-bottom: 1px solid #394260; 
         }
-
-        .action-item:last-child {
-            border-bottom: none;
-        }
-
-        .date-highlight {
-            background-color: #C5CBEB;
-            padding: 3px 8px;
-            border-radius: 3px;
-            font-weight: bold;
-            color: #263051;
+        .date-highlight { 
+            background-color: #C5CBEB; 
+            padding: 3px 8px; 
+            border-radius: 4px; 
+            font-weight: bold; 
+            color: #263051; 
             white-space: nowrap;
         }
-
-        .morale-high {
-            color: #00aa00;
+        .morale-high { 
+            color: #00aa00; 
+            font-weight: bold; 
+        }
+        .morale-moderate { 
+            color: #ff8800; 
+            font-weight: bold; 
+        }
+        .morale-low { 
+            color: #cc0000; 
+            font-weight: bold; 
+        }
+        .priority-urgent {
+            color: #ff4444;
             font-weight: bold;
         }
-
-        .morale-moderate {
+        .priority-high {
             color: #ff8800;
             font-weight: bold;
         }
-
-        .morale-low {
-            color: #cc0000;
+        .priority-medium {
+            color: #0066cc;
             font-weight: bold;
         }
-
-        .agent-note {
-            background-color: #f0f0f0;
-            padding: 12px;
-            margin: 10px 0;
-            font-size: 14px;
-            font-style: italic;
-            border-radius: 4px;
-            border-left: 3px solid #888;
+        ul {
+            margin: 8px 0;
+            padding-left: 20px;
         }
-
-        .duplicate-notice {
-            background-color: #fff9e6;
-            padding: 15px;
-            margin: 15px 30px;
-            font-size: 14px;
-            border-left: 4px solid #ffcc00;
-            border-radius: 4px;
+        li {
+            margin: 5px 0;
         }
-
-        .breakthrough {
-            background-color: #e6fff0;
-            border: 2px solid #00cc44;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-
         .footer {
             text-align: center;
-            padding: 30px;
-            background-color: #f8f9ff;
+            padding: 20px;
             color: #394260;
             font-size: 14px;
-        }
-
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #5473C6;
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-size: 24px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-            transition: background-color 0.3s;
-        }
-
-        .back-to-top:hover {
-            background-color: #3957A6;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-
-            .header h1 {
-                font-size: 24px;
-            }
-
-            .summary-stats {
-                padding: 20px;
-            }
-
-            .stat-number {
-                font-size: 28px;
-            }
-
-            .member-section,
-            .member-section-alt,
-            .member-section-alt2 {
-                margin: 15px 15px;
-                padding: 15px;
-            }
-
-            .toc,
-            .alert-box,
-            .alert-box-critical,
-            .duplicate-notice {
-                margin: 15px 15px;
-            }
-
-            .team-header,
-            .team-header-alt,
-            .team-header-alt2 {
-                padding: 12px 15px;
-                font-size: 18px;
-            }
-
-            .back-to-top {
-                bottom: 20px;
-                right: 20px;
-                width: 45px;
-                height: 45px;
-            }
+            font-style: italic;
         }
     </style>
 </head>
 <body>
-    <a href="#top" class="back-to-top" title="Back to top">↑</a>
-    
-    <div class="container" id="top">
+    <div class="container">
         <div class="header">
             <h1>🚀 ZIP Launchpad Team Status Summary</h1>
-            <div class="subtitle">LaunchMate Management System</div>
-        </div>
-
-        <div class="timestamp">
-            <strong>Last Updated:</strong> October 4, 2025 | <strong>Data Collection:</strong> October 2-4, 2025
+            <div class="subtitle">Generated October 14, 2025 | LaunchMate Management System</div>
         </div>
         
         <div class="summary-stats">
             <div class="stat-item">
-                <div class="stat-number">40</div>
+                <div class="stat-number">28</div>
                 <div class="stat-label">Agents Contacted</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">37</div>
+                <div class="stat-number">24</div>
                 <div class="stat-label">Responses Received</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">25+</div>
-                <div class="stat-label">Active Startups</div>
+                <div class="stat-number">3</div>
+                <div class="stat-label">Awaiting Response</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">4</div>
-                <div class="stat-label">Critical Alerts</div>
+                <div class="stat-number">1</div>
+                <div class="stat-label">Technical Errors</div>
             </div>
         </div>
 
-        <div class="toc">
-            <h2>📋 Table of Contents</h2>
+        <div class="alert-box-critical">
+            <h3>🚨 CRITICAL ALERTS</h3>
             <ul>
-                <li><a href="#alerts">🚨 Critical Alerts & Celebrations</a></li>
-                <li><a href="#launchmate">🚀 LaunchMate Platform Team (3 members)</a></li>
-                <li><a href="#revenue">💰 Revenue-Generating Startups (7 teams)</a></li>
-                <li><a href="#validation">🔍 Validation Stage Startups (5 teams)</a></li>
-                <li><a href="#early">🌱 Early Stage Startups (4 teams)</a></li>
-                <li><a href="#special">⚠️ Special Attention Needed (2 teams)</a></li>
-                <li><a href="#no-checkin">📭 Awaiting First Check-ins (4 teams)</a></li>
-                <li><a href="#action-items">🎯 Priority Action Items for Erica</a></li>
+                <li><strong>Daniel (Second Course)</strong> - Latest data from JULY 29, 2025 - no contact for MONTHS</li>
+                <li><strong>HerHealthAI Founder</strong> - Active validation avoidance since Sept 12</li>
+                <li><strong>Sky (SipSecure)</strong> - 3+ weeks no response since Sept 19 mid-check-in</li>
+                <li><strong>Daniel (Wayvlo)</strong> - Neal Test deadline was YESTERDAY (Oct 14)</li>
             </ul>
         </div>
 
-        <div class="duplicate-notice">
-            <strong>⚠️ SYSTEM NOTE:</strong> Multiple agents (5-6) reported receiving 5-6 identical summary requests. This indicates duplicate collection attempts. Recommend reviewing collection frequency and implementing deduplication logic to prevent agent fatigue.
+        <div class="alert-box">
+            <h3>🎉 MAJOR WINS</h3>
+            <ul>
+                <li><strong>Jourdan (Her Sports San Diego)</strong> - 6,500 email list + preorder testing THIS WEEK</li>
+                <li><strong>Kavindi (Foodie)</strong> - 20/24 validation sessions confirmed problem (83%!)</li>
+                <li><strong>Sandy (UniExchange)</strong> - 100 users in 24 hours from single TikTok</li>
+                <li><strong>Sammie (Foot Kinetics)</strong> - Manufacturing contract signed + summit prep complete</li>
+            </ul>
         </div>
-
-        <div id="alerts">
-            <div class="alert-box-critical">
-                <strong>🚨 CRITICAL ALERTS - IMMEDIATE ATTENTION REQUIRED</strong>
-                <ul>
-                    <li><strong>Daniel (Second Course):</strong> 8+ WEEKS without contact since July 29, 2025, during critical beta testing phase</li>
-                    <li><strong>Robert (Academic Advisor AI):</strong> October 2 Assistant Dean deadline passed 2 days ago - status unknown</li>
-                    <li><strong>Laura (LaunchMate):</strong> Retreating from external validation back to technical work after breakthrough</li>
-                    <li><strong>Kanna (ASAICHI):</strong> September 25 deadline for first 3 transactions now 9 days overdue</li>
-                </ul>
-            </div>
-
-            <div class="alert-box">
-                <strong>🎉 CELEBRATION-WORTHY WINS</strong>
-                <ul>
-                    <li><strong>Jourdan (Her Sports San Diego):</strong> Built 6,500-person email list ready for preorder revenue testing!</li>
-                    <li><strong>Sandy (UniExchange):</strong> 100 new users from single viral TikTok video - proven acquisition channel</li>
-                    <li><strong>Lisa (Her Sports San Diego):</strong> 62% follower-to-subscriber conversion on campus giveaways</li>
-                    <li><strong>Sammie (Foot Kinetics):</strong> Seed Fund approval + secured expert manufacturing partnership</li>
-                    <li><strong>Paige (LaunchMate):</strong> Successfully onboarded 17 users in institutional rollout</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- LAUNCHMATE TEAM -->
-        <div id="launchmate" class="team-section">
-            <div class="team-header">🚀 LaunchMate Platform Team</div>
+                <!-- REVENUE-GENERATING STARTUPS -->
+        <div class="team-section">
+            <div class="team-header">💰 Revenue-Generating Startups</div>
             
-            <div class="member-section">
-                <div class="member-name">Laura (Founder)</div>
+            <div class="startup-card">
+                <div class="startup-name">Sammie - Foot Kinetics</div>
                 
-                <div class="update-category">
-                    <span class="category-label">📅 Last Check-in:</span>
-                    <span class="date-highlight">October 1, 2025</span> - 🟧 Building Mode (declining from 🟩 Strong Momentum)
+                <div class="info-block">
+                    <div class="info-label">📅 Last Check-in:</div>
+                    <span class="date-highlight">October 6, 2025 - 4:17 PM PST</span> | 🟩 Strong Momentum
                 </div>
 
-                <div class="update-category">
-                    <span class="category-label">📈 Recent Progress:</span>
+                <div class="info-block">
+                    <div class="info-label">📈 Recent Progress (Oct 6):</div>
                     <ul>
-                        <li><span class="date-highlight">Sept 27:</span> First external founder validation at Downtown Works with Kavindi (Foodie startup)</li>
-                        <li><span class="date-highlight">Sept 30:</span> AI Champion presentation demonstrating Zapier workflows</li>
-                        <li><span class="date-highlight">Sept 30:</span> Deployed Discord Pulse v2 with shared memory based on team feedback</li>
-                        <li><span class="date-highlight">Sept 30:</span> Implemented Letta YouTube auto-feed to LaunchMate Discord</li>
+                        <li>Finalized manufacturing contract details and SENT SIGNED CONTRACT</li>
+                        <li>Booked flights and programmed NFC business cards for Outdoor Media Summit</li>
+                        <li>Researched summit attendees, scheduled finance overview with Spencer</li>
+                        <li>Caught up on QuickBooks accounting and reconciliation</li>
                     </ul>
                 </div>
 
                 <div class="wins">
-                    <span class="category-label">🎉 WINS:</span>
+                    <div class="info-label">🎉 WINS:</div>
                     <ul>
-                        <li>First systematic external founder validation outside her team</li>
-                        <li>Discovered real technical limitations through actual usage</li>
-                        <li>Successfully deployed platform features to entire team</li>
-                    </ul>
-                </div>
-
-                <div class="blockers">
-                    <span class="category-label">🚨 TECHNICAL BLOCKERS:</span>
-                    <ul>
-                        <li>OCF system: Gemini models have poor tool calling reliability vs Claude-Sonnet-4</li>
-                        <li>Discord Pulse: One-sided notifications create value imbalance</li>
-                        <li>Erica Summarizer: Email truncation at 30+ teams vs 10 teams working</li>
-                    </ul>
-                </div>
-
-                <div class="pattern-alert">
-                    <span class="category-label">⚠️ PATTERN ALERT - CRITICAL:</span>
-                    Laura achieved breakthrough external validation but is now <strong>retreating to technical fixes</strong> rather than expanding to more founders. Has access to Downtown Works and in-flight sessions but focusing on optimizing for one user instead of testing with 2-3 more. <strong>Classic validation avoidance behavior.</strong>
-                </div>
-
-                <div class="deadlines">
-                    <span class="category-label">⏰ UPCOMING:</span>
-                    <ul>
-                        <li><span class="date-highlight">This Friday:</span> Continue external testing with Kavindi</li>
-                        <li>Ongoing: Fix Gemini model prompt issues</li>
-                        <li>Ongoing: Test Erica summarizer scaling solutions</li>
-                    </ul>
-                </div>
-
-                <div class="support-needed">
-                    <span class="category-label">🤝 SUPPORT FROM ERICA:</span>
-                    <strong>HIGH PRIORITY:</strong> Structure and accountability for customer validation. Laura needs push to expand beyond single test to 2-3 more external founders <strong>before</strong> returning to technical work.
-                </div>
-
-                <div class="update-category">
-                    <span class="category-label">💪 MORALE:</span>
-                    <span class="morale-high">High</span> - engaged, responsive, catching system issues
-                </div>
-            </div>
-
-            <div class="member-section">
-                <div class="member-name">Paige (Team Member)</div>
-                
-                <div class="update-category">
-                    <span class="category-label">📅 Last Check-in:</span>
-                    <span class="date-highlight">October 1, 2025</span> - 🟧 Building Mode
-                </div>
-
-                <div class="update-category">
-                    <span class="category-label">📈 Recent Progress:</span>
-                    <ul>
-                        <li><span class="date-highlight">Aug 30:</span> Onboarded 17 new users - major institutional rollout!</li>
-                        <li><span class="date-highlight">Sept 24:</span> User interviews revealed extrinsic vs intrinsic motivation gap</li>
-                        <li><span class="date-highlight">Oct 1:</span> Identified bugs in group orchestration during testing</li>
-                        <li><span class="date-highlight">Oct 1:</span> Building gamification feature (leaderboard)</li>
-                    </ul>
-                </div>
-
-                <div class="wins">
-                    <span class="category-label">🎉 WINS:</span>
-                    <ul>
-                        <li>Successful institutional rollout with 17 users</li>
-                        <li>Critical insight: students use LaunchMate to satisfy mentors, not intrinsic value</li>
-                    </ul>
-                </div>
-
-                <div class="blockers">
-                    <span class="category-label">🚨 BLOCKERS:</span>
-                    <ul>
-                        <li>Technical bugs in group orchestration features</li>
-                        <li>Core challenge: What makes students intrinsically want to use LaunchMate?</li>
-                    </ul>
-                </div>
-
-                <div class="update-category">
-                    <span class="category-label">💪 MORALE:</span>
-                    <span class="morale-high">High</span> - actively engaged in product development
-                </div>
-            </div>
-
-            <div class="member-section">
-                <div class="member-name">Craig (Team Member)</div>
-                
-                <div class="update-category">
-                    <span class="category-label">📅 Last Check-in:</span>
-                    <span class="date-highlight">September 16, 2025</span> - 🟧 Partial Progress (2+ weeks ago)
-                </div>
-
-                <div class="wins">
-                    <span class="category-label">🎉 WIN:</span>
-                    <ul>
-                        <li>Deployed to inflight cohort on Sept 13</li>
-                    </ul>
-                </div>
-
-                <div class="blockers">
-                    <span class="category-label">🚨 MAJOR BLOCKERS:</span>
-                    <ul>
-                        <li>Zero user engagement after deployment</li>
-                        <li>No intrinsic user motivation to use platform</li>
-                        <li>Stuck in technical problem-solving without addressing core value</li>
-                    </ul>
-                </div>
-
-                <div class="support-needed">
-                    <span class="category-label">🤝 SUPPORT NEEDED:</span>
-                    User engagement strategies, motivation design workshop
-                </div>
-
-                <div class="update-category">
-                    <span class="category-label">💪 MORALE:</span>
-                    <span class="morale-low">🔴 Low</span> - stuck without user traction
-                </div>
-            </div>
-        </div>
-
-        <!-- REVENUE-GENERATING STARTUPS -->
-        <div id="revenue" class="team-section">
-            <div class="team-header-alt">💰 Revenue-Generating Startups</div>
-            
-            <div class="member-section-alt">
-                <div class="member-name">Sammie - Foot Kinetics</div>
-                <div class="agent-note">⚠️ 4 different agents working with Sammie - coordination issue. 3 agents report no formal check-in completed.</div>
-                
-                <div class="update-category">
-                    <span class="category-label">📅 Last Check-in:</span>
-                    <span class="date-highlight">September 30, 2025</span> - 🟩 Strong Momentum (one agent only)
-                </div>
-
-                <div class="update-category">
-                    <span class="category-label">💼 Business Overview:</span>
-                    Established blister prevention cream business with Amazon (80%), REI (15%), direct sales (5%) distribution
-                </div>
-
-                <div class="update-category">
-                    <span class="category-label">📈 Recent Progress:</span>
-                    <ul>
-                        <li><span class="date-highlight">Sept 30:</span> Seed Fund approved for Outdoor Media Summit (Colorado)</li>
-                        <li><span class="date-highlight">Sept 30:</span> 5-hour manufacturer facility tour + CEO meeting (LA)</li>
-                        <li><span class="date-highlight">Sept 30:</span> Reviewed manufacturing contract (2 questions pending)</li>
-                        <li>Large jar order in production: 5,500 units</li>
-                    </ul>
-                </div>
-
-                <div class="wins">
-                    <span class="category-label">🎉 WINS:</span>
-                    <ul>
-                        <li>Seed Fund approval for strategic market access</li>
-                        <li>Manufacturing partnership with deep expertise - CEO identified ingredients by touch/smell!</li>
-                        <li>Project manager has direct Foot Kinetics product experience</li>
-                        <li>5,500-unit inventory commitment shows strong validation</li>
-                    </ul>
-                </div>
-
-                <div class="blockers">
-                    <span class="category-label">🚨 ACCOUNTABILITY PATTERN:</span>
-                    <ul>
-                        <li>Waiting on contract answers to finalize manufacturing</li>
-                        <li><strong>Pattern of promising action but inconsistent follow-through</strong></li>
-                        <li>3/4 agents report no formal check-in - accountability gap</li>
+                        <li>Manufacturing contract signed and ready for testing phase</li>
+                        <li>Systematic summit preparation with targeted networking research</li>
+                        <li>Improved financial processes and caught recurring accounting error</li>
+                        <li>Growing confidence in business advocacy and vendor relationship management</li>
                     </ul>
                 </div>
 
                 <div class="deadlines">
-                    <span class="category-label">⏰ UPCOMING:</span>
+                    <div class="info-label">⏰ UPCOMING MILESTONES:</div>
                     <ul>
-                        <li><span class="date-highlight">This week:</span> 3-hour research session for summit networking</li>
-                        <li>NFC business card development</li>
-                        <li>Manufacturing contract signing + pilot batch</li>
-                        <li>Outdoor Media Summit attendance (Colorado)</li>
+                        <li><span class="date-highlight">Oct 27-29</span>: Outdoor Media Summit attendance with product sampling</li>
+                        <li><span class="date-highlight">Oct 9</span>: Small HikeGoo jar filling and photography workflow</li>
+                        <li><span class="date-highlight">Oct 8</span>: Finance overview with Spencer</li>
+                        <li>Manufacturing testing initiation upon payment</li>
                     </ul>
                 </div>
 
                 <div class="support-needed">
-                    <span class="category-label">🤝 SUPPORT FROM ERICA:</span>
-                    <ul>
-                        <li>Digital marketing/branding experts for NFC business card</li>
-                        <li>Supply chain/operations domain experts for office hours</li>
-                        <li><strong>Accountability support for consistent follow-through</strong></li>
-                    </ul>
+                    <div class="info-label">🤝 SUPPORT NEEDED FROM ERICA:</div>
+                    ZIP experts in digital marketing/branding for NFC business card recommendations
                 </div>
 
-                <div class="update-category">
-                    <span class="category-label">💪 MORALE:</span>
-                    <span class="morale-high">Very High</span> - strategic thinking, systematic execution
+                <div class="info-block">
+                    <div class="info-label">💪 MORALE:</div>
+                    <span class="morale-high">Very High</span> - excellent operational execution and systematic business thinking
                 </div>
             </div>
 
-            <div class="member-section-alt">
-                <div class="member-name">Sandy - UniExchange</div>
+            <div class="startup-card">
+                <div class="startup-name">Sandy - UniExchange</div>
                 
-                <div class="update-category">
-                    <span class="category-label">📅 Last Check-in:</span>
-                    <span class="date-highlight">September 19, 2025</span> - 🟩 Strong Momentum
+                <div class="info-block">
+                    <div class="info-label">📅 Last Check-in:</div>
+                    <span class="date-highlight">September 19, 2025</span> | 🟩 Strong Momentum
                 </div>
 
                 <div class="breakthrough">
-                    🎉 <strong>MAJOR BREAKTHROUGH:</strong> 100 users in 24 hours from single viral TikTok! Proven acquisition channel with viral videos hitting 71k, 67k, 22k, 19k views. Shifted from theory to execution with measurable results.
+                    🎉 <strong>BREAKTHROUGH:</strong> 100 users in 24 hours from single viral TikTok (22k views)! Viral videos: 71k, 67k, 22k, 19k views
                 </div>
 
-                <div class="update-category">
-                    <span class="category-label">📈 Recent Progress:</span>
+                <div class="blockers">
+                    <div class="info-label">🚨 CHALLENGE:</div>
+                    Making UniExchange-specific content perform as well as general funny/relatable posts on TikTok
+                </div>
+
+                <div class="deadlines">
+                    <div class="info-label">⏰ CURRENT FOCUS:</div>
+                    Testing mixed content approach to optimize UniExchange conversion rates
+                </div>
+
+                <div class="support-needed">
+                    <div class="info-label">🤝 SUPPORT NEEDED FROM ERICA:</div>
+                    Potential guidance on content systematization and user retention measurement now that acquisition is working
+                </div>
+
+                <div class="info-block">
+                    <div class="info-label">💪 MORALE:</div>
+                    <span class="morale-high">High</span> - shifted from "can we get users?" to "how do we optimize this working channel?"
+                </div>
+            </div>
+
+            <div class="startup-card">
+                <div class="startup-name">Jai & Sanchit - Redtri (Australia)</div>
+                
+                <div class="info-block">
+                    <div class="info-label">📅 Last Check-in:</div>
+                    Jai: <span class="date-highlight">Sept 24, 2025</span> | Sanchit: <span class="date-highlight">Sept 12, 2025</span>
+                </div>
+
+                <div class="wins">
+                    <div class="info-label">🎉 WINS:</div>
                     <ul>
-                        <li>Cracked TikTok algorithm strategy</li>
-                        <li>100 new users from one 22k-view UniExchange video</li>
-                        <li>Multiple viral videos proving channel viability</li>
+                        <li>Secured TWO paying clients (AUD $1,500 and AUD $5,000)</li>
+                        <li>Delivered Phase 1 real estate website for Australian client</li>
+                        <li>Building AI agent automation (Phase 2) for messages/calls</li>
+                        <li>Strategic pivot: automate frontend while supplying backend tools</li>
+                        <li>Envisioning "AI-powered HubSpot for real estate"</li>
                     </ul>
                 </div>
 
                 <div class="blockers">
-                    <span class="category-label">🚨 CURRENT CHALLENGE:</span>
-                    Making UniExchange-specific content perform as well as general relatable posts
+                    <div class="info-label">🚨 NEXT STEP:</div>
+                    Jai needs 5 new paid commitments for streamlined offering to validate pivot
                 </div>
 
-                <div class="deadlines">
-                    <span class="category-label">⏰ THIS WEEK:</span>
-                    Testing mixed content approach to optimize conversion rates
-                </div>
-
-                <div class="support-needed">
-                    <span class="category-label">🤝 SUPPORT NEEDED:</span>
-                    Guidance on content systematization and user retention measurement
-                </div>
-
-                <div class="update-category">
-                    <span class="category-label">💪 MORALE:</span>
-                    <span class="morale-high">High</span> - real momentum, shifted to "how do we optimize?"
+                <div class="info-block">
+                    <div class="info-label">💪 MORALE:</div>
+                    <span class="morale-high">High</span> - fueled by positive client feedback and clear direction
                 </div>
             </div>
-
-            <div class="member-section-alt">
-                <div class="member-name">Stacey - Nourish</div>
+        </div>
+                <!-- VALIDATION STAGE STARTUPS -->
+        <div class="team-section">
+            <div class="team-header-alt">🔍 Validation Stage Startups</div>
+            
+            <div class="startup-card-alt">
+                <div class="startup-name">Jourdan & Lisa - Her Sports San Diego</div>
                 
-                <div class="update-category">
-                    <span class="category-label">📅 Last Check-in:</span>
-                    <span class="date-highlight">August 29, 2025</span> - 🟩 Strong Momentum (5+ weeks ago)
+                <div class="info-block">
+                    <div class="info-label">📅 Last Check-in:</div>
+                    Jourdan: <span class="date-highlight">Oct 1, 2025 - 8:15 PM PST</span> | Lisa: <span class="date-highlight">Sept 19, 2025</span><br>
+                    Both: 🟩 Strong Momentum
+                </div>
+
+                <div class="breakthrough">
+                    🎉 <strong>GAME CHANGER - JOURDAN:</strong> Built 6,500-person email list ready for preorder testing! Successfully shifted from "creating content" to "creating ways for people to financially support the mission"
+                </div>
+
+                <div class="info-block">
+                    <div class="info-label">📈 Recent Progress:</div>
+                    <ul>
+                        <li>University social media collaborations (slow but steady growth)</li>
+                        <li>Athlete pathway interviews for monetization</li>
+                        <li>Wave FC Brazilian player interview</li>
+                        <li>Attended women's sports panel</li>
+                        <li>Secured 2 "Your Voice" contributors</li>
+                        <li>Validated parents want roadmaps for kids' athletic journeys</li>
+                    </ul>
                 </div>
 
                 <div class="wins">
-                    <span class="category-label">🎉 WINS:</span>
+                    <div class="info-label">🎉 WINS - LISA:</div>
                     <ul>
-                        <li>1st place in ZIP cohort review panel</li>
-                        <li>Website photo shoot with product testing completed</li>
+                        <li>62% conversion rate from followers to subscribers (8 subscribers from 13 followers in 2 hours!)</li>
+                        <li>Clear user validation: subscribers want SD athlete profiles</li>
+                        <li>8x engagement boost from college team collaborations</li>
                     </ul>
                 </div>
 
-                <div class="update-category">
-                    <span class="category-label">📈 Current Focus:</span>
+                <div class="blockers">
+                    <div class="info-label">🚨 LISA'S BLOCKERS:</div>
                     <ul>
-                        <li>Finishing prototyping phase</li>
-                        <li>Building relationships with sustainable manufacturers</li>
-                        <li>Testing with working florists</li>
+                        <li>Campus setup limitations (3-week approval process limits optimal event positioning)</li>
+                        <li>Still analyzing open rates for schedules vs. recaps content</li>
+                    </ul>
+                </div>
+
+                <div class="deadlines">
+                    <div class="info-label">⏰ THIS WEEK - JOURDAN:</div>
+                    <ul>
+                        <li>Email preorder batch testing LAUNCH</li>
+                        <li>Onboarding marketing intern</li>
+                        <li>Launching podcast</li>
+                    </ul>
+                </div>
+
+                <div class="deadlines">
+                    <div class="info-label">⏰ UPCOMING - LISA:</div>
+                    <ul>
+                        <li>Morgan Lewis (Mojo) profile completion</li>
+                        <li>Open rate analysis for content optimization</li>
+                        <li>Additional on-campus event testing</li>
                     </ul>
                 </div>
 
                 <div class="support-needed">
-                    <span
+                    <div class="info-label">🤝 SUPPORT NEEDED FROM ERICA - JOURDAN:</div>
+                    Could benefit from Maileen Flores (Business Model Development & Financial Modeling) for multiple revenue stream testing structure
+                </div>
+
+                <div class="info-block">
+                    <div class="info-label">💪 MORALE:</div>
+                    <span class="morale-high">Very High</span> - systematic revenue testing with clear monetization pathways
+                </div>
+            </div>
+
+            <div class="startup-card-alt">
+                <div class="startup-name">Kavindi - Foodie (formerly ReadyPlan)</div>
+                
+                <div class="info-block">
+                    <div class="info-label">📅 Last Check-in:</div>
+                    <span class="date-highlight">October 11, 2025 - 10:48 PM PST</span> | 🟩 Commitment Mode
+                </div>
+
+                <div class="wins">
+                    <div class="info-label">🎉 WINS:</div>
+                    <ul>
+                        <li><strong>20/24 validation sessions confirmed problem and interest (83% confirmation rate!)</strong></li>
+                        <li>Executed pivot: coordination tool → polling/ranking tool with restaurant discovery</li>
+                        <li>Completed 50+ customer interviews this semester</li>
+                        <li>Using Figma as thinking tool to visualize new concept</li>
+                        <li>Healthy lean habits (not building prematurely)</li>
+                    </ul>
+                </div>
+
+                <div class="blockers">
+                    <div class="info-label">🔦 FLASHLIGHT MODE ASSESSMENT:</div>
+                    New solution direction (polling/ranking) is untested - needs rapid validation
+                </div>
+
+                <div class="deadlines">
+                    <div class="info-label">⏰ DEADLINE:</div>
+                    <strong>By <span class="date-highlight">Oct 18, 2025</span>:</strong> Run 3 Neal Tests with new polling/ranking flow
+                </div>
+
+                <div class="info-block">
+                    <div class="info-label">💪 MORALE:</div>
+                    <span class="morale-high">High</span> - enthusiastic about new direction, executing validation consistently
+                </div>
+            </div>
+
+            <div class="startup-card-alt">
+                <div class="startup-name">Robert - Academic Advisor AI</div>
+                
+                <div class="info-block">
+                    <div class="info-label">📅 Last Check-in:</div>
+                    <span class="date-highlight">September 19, 2025</span> | 🟩 Strong Momentum
+                </div>
+
+                <div class="info-block">
+                    <div class="info-label">📈 Recent Progress (Sept 19):</div>
+                    <ul>
+                        <li>Intern sent screenshots of custom-coded AI counselor (with digestible UI)</li>
+                        <li>Intern fixing bugs (ongoing for 2-3 more days)</li>
+                        <li>Filing for C-Corp</li>
+                        <li>Applying for Lavin Success Center funding</li>
+                        <li>SDSU published an article about Academic Advisor AI</li>
+                    </ul>
+                </div>
+
+                <div class="wins">
+                    <div class="info-label">🎉 WINS:</div>
+                    <ul>
+                        <li>Intern developed first custom build</li>
+                        <li>SDSU article publication</li>
+                        <li>Shift to founder mindset (leadership, delegation, strategic planning)</li>
+                    </ul>
+                </div>
+
+                <div class="alert-box-critical" style="margin: 10px 0;">
+                    <strong>⚠️ CRITICAL DEADLINE MISSED:</strong><br>
+                    October 2, 2025: Hand off tool to Assistant Dean for testing with 3 students<br>
+                    <strong>STATUS: DEADLINE WAS 12 DAYS AGO - UNKNOWN IF COMPLETED</strong>
+                </div>
+
+                <div class="info-block">
+                    <div class="info-label">💪 MORALE:</div>
+                    <span class="morale-high">High</span> - demonstrating strong momentum and embracing leadership
+                </div>
+            </div>
+
+            <div class="startup-card-alt">
+                <div class="startup-name">Gavin - Second Course / Connect Alt</div>
+                
+                <div class="info-block">
+                    <div class="info-label">📅 Last Check-in:</div>
+                    <span class="date-highlight">September 17-22, 2025</span> | 🟧 Building Mode
+                </div>
+
+                <div class="wins">
+                    <div class="info-label">🎉 WINS:</div>
+                    <ul>
+                        <li>Secured 40 student ambassadors</li>
+                        <li>Launched newsletter with 50.17% open rate (vs 20-25% industry avg!)</li>
+                        <li>Completed website migration to Base 44</li>
+                        <li>Planning presentation for 200+ student sign-ups</li>
+                    </ul>
+                </div>
+
+                <div class="blockers">
+                    <div class="info-label">🚨 BLOCKERS:</div>
+                    <ul>
+                        <li>User acquisition struggles - need systematic approach</li>
+                        <li>Facebook group performance dropped (5-10 to 2 subscribers per post)</li>
+                        <li>Relationship meetings not converting to concrete growth</li>
+                        <li>Need shift from internal building to direct user validation with core users</li>
+                    </ul>
+                </div>
+
+                <div class="support-needed">
+                    <div class="info-label">🤝 SUPPORT NEEDED FROM ERICA:</div>
+                    Systematic marketing approach and user acquisition strategies for accessibility community
+                </div>
+
+                <div class="info-block">
+                    <div class="info-label">💪 MORALE:</div>
+                    <span class="morale-moderate">Moderate</span> - positive about technical progress, motivated to solve acquisition
+                </div>
+            </div>
+
+            <div class="startup-card-alt">
+                <div class="startup-name">Nick - University Valet</div>
+                
+                <div class="info-block">
+                    <div class="info-label">📅 Last Check-in:</div>
+                    <span class="date-highlight">September 26, 2025</span> (via agent communication)
+                </div>
+
+                <div class="wins">
+                    <div class="info-label">🎉 BREAKTHROUGH:</div>
+                    <ul>
+                        <li>Real traction with SDSU Athletics Department for valet parking</li>
+                        <li>Opportunity for trial popup at ZIP/Lavin Advisory Board meeting</li>
+                    </ul>
+                </div>
+
+                <div class="alert-box-critical" style="margin: 10px 0;">
+                    <strong>⚠️ EXECUTION CONCERN:</strong><br>
+                    SDSU Alumni Center event reportedly 2 weeks away (end of October) but lack of detailed execution updates since Sept 16. Neal is concerned about execution readiness.
+                </div>
+
+                <div class="blockers">
+                    <div class="info-label">🚨 BLOCKERS:</div>
+                    <ul>
+                        <li>Lack of detailed execution updates on event logistics, contracts, staffing, financials</li>
+                        <li>Advisory Board trial popup coordination still pending guidance</li>
+                    </ul>
+                </div>
+
+                <div class="support-needed">
+                    <div class="info-label">🤝 URGENT SUPPORT FROM ERICA:</div>
+                    <ul>
+                        <li>Coordinate logistics/approvals for Advisory Board trial popup</li>
+                        <li>Ensure Nick provides necessary execution details for Alumni Center event</li>
+                    </ul>
+                </div>
+
+                <div class="info-block">
+                    <div class="info-label">💪 MORALE:</div>
+                    <span class="morale-moderate">Moderate</span> - breakthrough boosted morale but execution gaps concerning
+                </div>
+            </div>
+
+            <div class="startup-card-alt">
+                <div class="startup-name">Stacey - Nourish (Vital Tidal)</div>
+                
+                <div class="info-block">
+                    <div class="info-label">📅 Last Check-in:</div>
+                    <span class="date-highlight">September 20, 2025</span> | 🟩 Strong Momentum
+                </div>
+
+                <div class="info-block">
+                    <div class="info-label">📈 Recent Progress:</div>
+                    <ul>
+                        <li>Partnership dissolution handled professionally</li>
+                        <li>Product reformulation focus</li>
+                        <li>Down to six dairy-free Conjugated Linoleic Acid samples for testing</li>
+                    </ul>
+                </div>
+
+                <div class="wins">
+                    <div class="info-label">🎉 WIN:</div>
+                    Clear communication in partnership dissolution - handled with maturity
+                </div>
+
+                <div class="deadlines">
+                    <div class="info-label">⏰ DEADLINE:</div>
+                    <span class="date-highlight">October 6</span> - Product reformulation completion
+                </div>
+
+                <div class="info-block">
+                    <div class="info-label">💪 MORALE:</div>
+                    <span class="morale-high">Strong resilience</span>, positive approach despite partnership challenges
+                </div>
+            </div>
+        </div>
