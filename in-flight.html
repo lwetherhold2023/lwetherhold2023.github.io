@@ -14,28 +14,32 @@
         .stat-item { text-align: center; margin: 10px; }
         .stat-number { font-size: 24px; font-weight: bold; color: #263051; }
         .stat-label { font-size: 12px; color: #394260; margin-top: 5px; }
-        .team-section { margin: 20px 0; }
-        .team-header { background-color: #5473C6; color: white; padding: 15px 25px; font-size: 18px; font-weight: bold; }
-        .team-header-alt { background-color: #3957A6; color: white; padding: 15px 25px; font-size: 18px; font-weight: bold; }
-        .team-header-critical { background-color: #8B0000; color: white; padding: 15px 25px; font-size: 18px; font-weight: bold; }
-        .team-body { padding: 20px 25px; border-left: 4px solid #5473C6; margin: 0 25px 15px 25px; background-color: #f8f9ff; }
-        .category-label { font-weight: bold; color: #394260; margin-bottom: 5px; }
-        .blockers { background-color: #ffe6e6; border-left: 4px solid #ff4444; padding: 10px; margin: 8px 0; }
-        .blockers .category-label { color: #cc0000; }
-        .wins { background-color: #e6ffe6; border-left: 4px solid #00aa00; padding: 10px; margin: 8px 0; }
-        .wins .category-label { color: #006600; }
-        .deadlines { background-color: #fff3e6; border-left: 4px solid #ff8800; padding: 10px; margin: 8px 0; }
-        .deadlines .category-label { color: #cc6600; }
-        .support-needed { background-color: #e6f3ff; border-left: 4px solid #0066cc; padding: 10px; margin: 8px 0; }
-        .support-needed .category-label { color: #004499; }
-        .action-items { background-color: #263051; color: #E2E7FD; padding: 25px; margin-top: 20px; }
-        .action-items h2 { margin-top: 0; color: #C5CBEB; }
-        .action-item { margin: 10px 0; padding: 8px 0; border-bottom: 1px solid #394260; }
+        .section-header { background-color: #5473C6; color: white; padding: 12px 25px; font-size: 16px; font-weight: bold; margin-top: 20px; }
+        .section-header-warning { background-color: #ff8800; }
+        .section-header-critical { background-color: #cc0000; }
+        .team-card { border-left: 4px solid #5473C6; margin: 15px 25px; padding: 15px; background-color: #f8f9ff; }
+        .team-card-warning { border-left-color: #ff8800; }
+        .team-card-critical { border-left-color: #cc0000; }
+        .team-name { font-size: 18px; font-weight: bold; color: #263051; margin-bottom: 10px; }
+        .team-meta { font-size: 13px; color: #666; margin-bottom: 10px; }
+        .date-badge { background-color: #C5CBEB; padding: 2px 8px; border-radius: 3px; font-weight: bold; color: #263051; }
+        .blockers { background-color: #ffe6e6; border-left: 4px solid #ff4444; padding: 10px; margin: 8px 0; border-radius: 0 5px 5px 0; }
+        .blockers-label { color: #cc0000; font-weight: bold; font-size: 13px; }
+        .wins { background-color: #e6ffe6; border-left: 4px solid #00aa00; padding: 10px; margin: 8px 0; border-radius: 0 5px 5px 0; }
+        .wins-label { color: #006600; font-weight: bold; font-size: 13px; }
+        .support { background-color: #e6f3ff; border-left: 4px solid #0066cc; padding: 10px; margin: 8px 0; border-radius: 0 5px 5px 0; }
+        .support-label { color: #004499; font-weight: bold; font-size: 13px; }
+        .deadlines { background-color: #fff3e6; border-left: 4px solid #ff8800; padding: 10px; margin: 8px 0; border-radius: 0 5px 5px 0; }
+        .deadlines-label { color: #cc6600; font-weight: bold; font-size: 13px; }
+        .morale { font-size: 13px; margin-top: 8px; }
         .morale-high { color: #00aa00; font-weight: bold; }
-        .morale-moderate { color: #ff8800; font-weight: bold; }
+        .morale-mixed { color: #ff8800; font-weight: bold; }
         .morale-low { color: #cc0000; font-weight: bold; }
-        .date-highlight { background-color: #C5CBEB; padding: 2px 6px; border-radius: 3px; font-weight: bold; color: #263051; }
-        .no-response { background-color: #f5f5f5; color: #999; padding: 15px 25px; margin: 0 25px 15px 25px; border-left: 4px solid #ccc; font-style: italic; }
+        .action-items { background-color: #263051; color: #E2E7FD; padding: 25px; margin-top: 20px; }
+        .action-items h2 { margin-top: 0; color: #C5CBEB; font-size: 18px; }
+        .action-item { margin: 12px 0; padding-bottom: 12px; border-bottom: 1px solid #394260; font-size: 14px; }
+        .no-response { background-color: #f5f5f5; color: #888; padding: 15px 25px; margin: 15px 25px; border-left: 4px solid #ccc; font-size: 13px; }
+        .footer { text-align: center; padding: 20px; background-color: #f5f5f5; color: #666; font-size: 12px; }
     </style>
 </head>
 <body>
@@ -47,291 +51,258 @@
         
         <div class="summary-stats">
             <div class="stat-item"><div class="stat-number">19</div><div class="stat-label">Official ZIP Teams</div></div>
-            <div class="stat-item"><div class="stat-number">10</div><div class="stat-label">Teams Reporting</div></div>
+            <div class="stat-item"><div class="stat-number">11</div><div class="stat-label">Teams Reporting</div></div>
             <div class="stat-item"><div class="stat-number">4</div><div class="stat-label">Strong Momentum</div></div>
-            <div class="stat-item"><div class="stat-number">3</div><div class="stat-label">Urgent Blockers</div></div>
-            <div class="stat-item"><div class="stat-number">6</div><div class="stat-label">Need Re-engagement</div></div>
+            <div class="stat-item"><div class="stat-number">3</div><div class="stat-label">Need Intervention</div></div>
+            <div class="stat-item"><div class="stat-number">3</div><div class="stat-label">Critical Re-engage</div></div>
         </div>
 
-        <!-- STRONG MOMENTUM TEAMS -->
-        <div class="team-section">
-            <div class="team-header">👗 FitMe - Troy Grandi</div>
-            <div class="team-body">
-                <p><strong>Last Activity:</strong> <span class="date-highlight">December 2, 2025</span></p>
-                <div class="wins">
-                    <div class="category-label">🎉 WINS:</div>
-                    • <strong>100 paying customers</strong> on web app<br>
-                    • 30% subscription conversion validated (6/20 upgraded $1→$2.99/month)<br>
-                    • Successfully rejected bad investor advice - validated hybrid pricing model<br>
-                    • Smart learning loop separation: web app for retention, mobile beta for experience
-                </div>
-                <div class="deadlines">
-                    <div class="category-label">⏰ UPCOMING:</div>
-                    • This week: Meeting with technical cofounders for closed beta date<br>
-                    • Next 2-3 weeks: Email 100 customers for beta invite, run 2-week closed beta
-                </div>
-                <div class="support-needed">
-                    <div class="category-label">🤝 SUPPORT NEEDED:</div>
-                    • Incorporation/legal questions for seed funding applications<br>
-                    • Investor pitch strategy guidance
-                </div>
-                <p><strong>💪 MORALE:</strong> <span class="morale-high">High</span> - Good decision-making momentum (note: missed Nov 23 check-in)</p>
+        <!-- STRONG MOMENTUM -->
+        <div class="section-header">🟢 STRONG MOMENTUM (4 Teams)</div>
+
+        <div class="team-card">
+            <div class="team-name">👗 FitMe</div>
+            <div class="team-meta"><strong>Founder:</strong> Troy Grandi | <strong>Last Check-in:</strong> <span class="date-badge">Dec 2, 2025</span></div>
+            <div class="wins">
+                <div class="wins-label">🎉 WINS:</div>
+                • <strong>100 paying customers</strong> on web app<br>
+                • 30% subscription conversion (6/20 upgraded $1→$2.99/month)<br>
+                • Rejected bad investor advice - validated hybrid pricing model<br>
+                • Smart learning loop: web app for retention, mobile beta for experience
             </div>
-        </div>
-
-        <div class="team-section">
-            <div class="team-header">🎓 Academic Advisor AI - Robert Sanchez</div>
-            <div class="team-body">
-                <p><strong>Last Activity:</strong> <span class="date-highlight">November 21, 2025</span> (active in conversations)</p>
-                <div class="wins">
-                    <div class="category-label">🎉 WINS:</div>
-                    • ✅ SDSU institutional validation: Assistant Dean confirmed pilot continues<br>
-                    • ✅ AWS deployment successful - moved from laptop to production<br>
-                    • ✅ Secured AWS Activate credits ($1,000+) through ZIP<br>
-                    • Tool now live with gpt-4o-mini running degree evaluations
-                </div>
-                <div class="blockers">
-                    <div class="category-label">🚨 BLOCKERS:</div>
-                    • Parsing accuracy issues in degree evaluation data layer<br>
-                    • Currently hiring backend parsing specialist (3-week window)
-                </div>
-                <div class="deadlines">
-                    <div class="category-label">⏰ CRITICAL DEADLINE:</div>
-                    • <strong style="color:#cc0000;">December 11, 2025: Assistant Dean presents to SDSU Dean</strong>
-                </div>
-                <div class="support-needed">
-                    <div class="category-label">🤝 SUPPORT NEEDED:</div>
-                    • <strong>Erica endorsed parallel university outreach strategy</strong> - will connect with contacts<br>
-                    • Backend hiring guidance: contractor vs. FTE trade-offs<br>
-                    • Stakeholder positioning for other CSU schools once SDSU validates
-                </div>
-                <p><strong>💪 MORALE:</strong> <span class="morale-high">High</span> - Strong momentum, clear path forward</p>
+            <div class="blockers">
+                <div class="blockers-label">⚠️ PATTERN TO WATCH:</div>
+                • Accountability drift: Missed Nov 23 check-in, went silent 9 days<br>
+                • Mobile app timeline unclear - needs cofounder meeting<br>
+                • Risk of building trap without recent customer validation
             </div>
-        </div>
-
-        <div class="team-section">
-            <div class="team-header">🌿 Nourish (kelpii) - Stacey Lehrer</div>
-            <div class="team-body">
-                <p><strong>Last Activity:</strong> <span class="date-highlight">Recent</span> - Erica support confirmed</p>
-                <div class="wins">
-                    <div class="category-label">🎉 WINS:</div>
-                    • Customer-responsive iteration approach noted as exemplary for program<br>
-                    • 4 paying customers secured through Neal test<br>
-                    • Product reformulation completed based on customer feedback
-                </div>
-                <div class="support-needed">
-                    <div class="category-label">✅ ERICA'S ACTIVE SUPPORT PLAN:</div>
-                    • Connecting with San Diego food manufacturing contacts<br>
-                    • Helping source bulk dairy-free CLA suppliers<br>
-                    • Exploring ZIP Launchpad funding options for $6,000 scaling capital
-                </div>
-                <p><strong>💪 MORALE:</strong> <span class="morale-high">High</span> - Strong validation momentum</p>
+            <div class="support">
+                <div class="support-label">🤝 SUPPORT NEEDED:</div>
+                • Incorporation/legal questions for seed funding<br>
+                • Investor pitch strategy guidance
             </div>
+            <div class="morale">💪 Morale: <span class="morale-high">High</span> - Good decision-making momentum</div>
         </div>
 
-        <div class="team-section">
-            <div class="team-header">🚗 Preferred Valet Parking - Nick Bernal</div>
-            <div class="team-body">
-                <p><strong>Last Activity:</strong> <span class="date-highlight">November 14, 2025</span></p>
-                <div class="wins">
-                    <div class="category-label">🎉 WINS:</div>
-                    • First revenue event executed successfully with operational excellence<br>
-                    • 21 pre-sales validated ($105 total)<br>
-                    • Strategic PATS partnership developing for institutional scaling<br>
-                    • Student market validated (higher adoption than faculty)
-                </div>
-                <div class="deadlines">
-                    <div class="category-label">⏰ UPCOMING:</div>
-                    • December 8, 2025: Second valet event<br>
-                    • Target: Weekly events, $50k annual revenue by Nov 2026
-                </div>
-                <div class="support-needed">
-                    <div class="category-label">🤝 SUPPORT NEEDED:</div>
-                    • Intern recruitment/training guidance for operational scaling<br>
-                    • Departmental marketing strategy refinement
-                </div>
-                <p><strong>💪 MORALE:</strong> <span class="morale-high">High</span> - Strong execution pattern</p>
+        <div class="team-card">
+            <div class="team-name">🎓 Academic Advisor AI</div>
+            <div class="team-meta"><strong>Founder:</strong> Robert Sanchez | <strong>Last Check-in:</strong> <span class="date-badge">Dec 11, 2025</span> (active)</div>
+            <div class="wins">
+                <div class="wins-label">🎉 WINS:</div>
+                • ✅ Dec 11 Dean presentation completed (progress check-in)<br>
+                • ✅ AWS deployment live with gpt-4o-mini<br>
+                • ✅ Interim CTO transition finalized<br>
+                • ✅ Assistant Dean reaffirmed pilot commitment<br>
+                • ✅ Backend engineer hiring underway for next semester
             </div>
-        </div>
-
-        <!-- TEAMS NEEDING ATTENTION -->
-        <div class="team-section">
-            <div class="team-header-alt">🍽️ Second Course - Daniel Self & Gavin</div>
-            <div class="team-body">
-                <p><strong>Last Activity:</strong> Daniel: <span class="date-highlight">Dec 10</span> | Gavin: <span class="date-highlight">Nov 20</span> (22-day gap)</p>
-                <div class="blockers">
-                    <div class="category-label">🚨 CRITICAL PATTERN IDENTIFIED:</div>
-                    <strong>THREE mentors (Neal, Paige, Erica) independently flagged same issue:</strong><br>
-                    • Daniel avoiding engagement experiments and revenue tests by doing comfortable strategic work<br>
-                    • 13 clubs signed but not posting consistently (engagement gap identified a month ago, unsolved)<br>
-                    • Zero Neal tests despite 300+ engaged students<br>
-                    • Gavin: 22-day communication silence, App Store approval status unknown
-                </div>
-                <div class="wins">
-                    <div class="category-label">🎉 WINS:</div>
-                    • Won Quick Pitch Competition (Nov 2025)<br>
-                    • Built stakeholder coalition with SDSU leadership<br>
-                    • 450+ students, 120+ GroupMe members<br>
-                    • eLeetCoders validation: 4 students responded in 15 minutes
-                </div>
-                <div class="deadlines">
-                    <div class="category-label">⏰ UPCOMING:</div>
-                    • December 2025: ECRT + EOP meetings<br>
-                    • Before Christmas: Aztec Shops coalition pitch<br>
-                    • February 1, 2026: Soft launch with institutional backing
-                </div>
-                <div class="support-needed">
-                    <div class="category-label">🤝 ERICA'S RECOMMENDATION:</div>
-                    • <strong>Immediate moratorium on institutional meetings</strong><br>
-                    • Mandatory 3 Neal tests this week<br>
-                    • Daily engagement-focused accountability check-ins<br>
-                    • Gavin: Reconnection call to clarify blockers
-                </div>
-                <p><strong>💪 MORALE:</strong> <span class="morale-moderate">Mixed</span> - High confidence from research but avoiding hard validation work</p>
+            <div class="deadlines">
+                <div class="deadlines-label">🎯 CLEAR METRICS:</div>
+                • 90% parsing accuracy = gate to official SDSU pilot<br>
+                • Two-step: Fix parsing gaps → Professor King focus group (early next semester)
             </div>
-        </div>
-
-        <div class="team-section">
-            <div class="team-header-alt">💗 Her Health AI - Vineeta</div>
-            <div class="team-body">
-                <p><strong>Last Activity:</strong> <span class="date-highlight">December 11, 2025</span> (live check-in)</p>
-                <p><strong>Status:</strong> 2/10 paying customers (just got #2 post-thesis defense)</p>
-                <div class="blockers">
-                    <div class="category-label">🚨 BLOCKER - BUILDING-BEFORE-VALIDATING PATTERN:</div>
-                    • Falling into building pattern again - wants to "work on anonymous part" before testing<br>
-                    • Has 3 girls WAITING who said they'd pay if anonymous<br>
-                    • Thesis defense complete (Dec 2) - no longer a legitimate blocker
-                </div>
-                <div class="wins">
-                    <div class="category-label">🎉 WINS:</div>
-                    • First paying customer ($1) - proved concept<br>
-                    • Empathy lab partnership secured for Dec 20+<br>
-                    • Manual service delivery working (2 users found value)
-                </div>
-                <div class="deadlines">
-                    <div class="category-label">⏰ CRITICAL WINDOW:</div>
-                    • <strong>Dec 3-20: Must get customers 2-5 before empathy lab partnerships start</strong>
-                </div>
-                <div class="support-needed">
-                    <div class="category-label">🤝 SUPPORT NEEDED:</div>
-                    • Intervention to test hacky anonymity solution TODAY (Google Form + code names)<br>
-                    • Accountability check Dec 3-5 to ensure restart post-thesis<br>
-                    • Pattern intervention: break cycle of "need to build X first"
-                </div>
-                <p><strong>💪 MORALE:</strong> <span class="morale-moderate">6/10</span> - Breakthrough wore off, at risk of new excuses</p>
+            <div class="support">
+                <div class="support-label">✅ ERICA'S ACTIVE SUPPORT:</div>
+                • Connecting Robert with 2-3 universities for parallel outreach<br>
+                • AWS Activate credits exploration for scaling<br>
+                • Positioning strategy for other CSU schools
             </div>
+            <div class="morale">💪 Morale: <span class="morale-high">High</span> - Clear metrics, consistent execution, strategic thinking</div>
         </div>
 
-        <div class="team-section">
-            <div class="team-header-alt">🥤 The T-Squeeze - Holland & Thaddeus</div>
-            <div class="team-body">
-                <p><strong>Last Activity:</strong> <span class="date-highlight">November 21, 2025</span> (20-day gap - longest ever)</p>
-                <div class="blockers">
-                    <div class="category-label">🚨 ENGAGEMENT CRISIS:</div>
-                    • Radio silent 20+ days after high-energy ZIP board pitch<br>
-                    • Unknown status on: verbal preorder conversions, website updates, intern activation<br>
-                    • Thaddeus: "validated then disengaged" pattern - moved from validation to execution, stopped checking in<br>
-                    • Weather blocking outdoor demo experiments
-                </div>
-                <div class="wins">
-                    <div class="category-label">🎉 WINS:</div>
-                    • 6 paying customers ($120 total revenue)<br>
-                    • Working prototype, Stripe integrated<br>
-                    • Marketing expert/investor connection from ZIP pitch<br>
-                    • Strong Oct-Nov momentum (4 customers in 3 weeks)
-                </div>
-                <div class="deadlines">
-                    <div class="category-label">⏰ UPCOMING (STATUS UNKNOWN):</div>
-                    • Mid-December: Idea Lab prototype milestone checkpoint<br>
-                    • Overdue: Verbal commitment follow-ups, intern outreach launch
-                </div>
-                <div class="support-needed">
-                    <div class="category-label">🤝 SUPPORT NEEDED:</div>
-                    • <strong>URGENT re-engagement intervention</strong> - strong validation but MIA at critical moment<br>
-                    • Accountability check on December deliverables<br>
-                    • Assessment: external factors (SDSU finals?) or blocker they're not sharing?
-                </div>
-                <p><strong>💪 MORALE:</strong> <span class="morale-low">Unknown/Concerning</span> - Disengagement during execution-critical phase</p>
+        <div class="team-card">
+            <div class="team-name">🌿 Nourish (kelpii)</div>
+            <div class="team-meta"><strong>Founder:</strong> Stacey Lehrer | <strong>Status:</strong> <span class="date-badge">Erica Support Active</span></div>
+            <div class="wins">
+                <div class="wins-label">🎉 WINS:</div>
+                • 4 paying customers through Neal test<br>
+                • Successful reformulation based on customer feedback<br>
+                • Clear expansion path to 9 more customers<br>
+                • Customer-responsive iteration noted as exemplary
             </div>
+            <div class="support">
+                <div class="support-label">✅ ERICA'S SUPPORT PLAN:</div>
+                • Connecting with San Diego food manufacturing contacts<br>
+                • Helping source bulk dairy-free CLA suppliers<br>
+                • Exploring ZIP funding options for $6,000 scaling capital
+            </div>
+            <div class="morale">💪 Morale: <span class="morale-high">High</span> - Strong customer-responsive momentum</div>
         </div>
 
-        <!-- CRITICAL RE-ENGAGEMENT NEEDED -->
-        <div class="team-section">
-            <div class="team-header-critical">📊 Redtrieve - Jai Sharma & Sanchit Singh</div>
-            <div class="team-body">
-                <p><strong>⚠️ EXTENDED GAPS - BOTH FOUNDERS NEED IMMEDIATE OUTREACH</strong></p>
-                
-                <p><strong>Jai Sharma:</strong></p>
-                <p>Last Check-in: <span class="date-highlight">October 17, 2025</span> (55 days ago)</p>
-                <div class="wins">
-                    <div class="category-label">Last Known Wins:</div>
-                    • Two paying clients (AUD 1,500 + AUD 5,000 = AUD 6,500+ revenue)<br>
+        <div class="team-card">
+            <div class="team-name">🚗 Preferred Valet Parking</div>
+            <div class="team-meta"><strong>Founder:</strong> Nick Bernal | <strong>Status:</strong> Strong execution pattern</div>
+            <div class="wins">
+                <div class="wins-label">🎉 WINS:</div>
+                • First revenue event executed with operational excellence<br>
+                • 21 pre-sales validated ($105 total)<br>
+                • PATS partnership developing for institutional scaling<br>
+                • Student market validated (higher adoption than faculty)
+            </div>
+            <div class="support">
+                <div class="support-label">🤝 SUPPORT NEEDED:</div>
+                • Intern recruitment/training guidance<br>
+                • Departmental marketing strategy refinement
+            </div>
+            <div class="morale">💪 Morale: <span class="morale-high">High</span> - Strong execution, no bottlenecks</div>
+        </div>
+
+        <!-- NEED INTERVENTION -->
+        <div class="section-header section-header-warning">🟡 NEED INTERVENTION (3 Teams)</div>
+
+        <div class="team-card team-card-warning">
+            <div class="team-name">🍽️ Second Course</div>
+            <div class="team-meta"><strong>Team:</strong> Daniel Self, Gavin | <strong>Last Check-ins:</strong> Daniel: <span class="date-badge">Dec 10</span> | Gavin: <span class="date-badge">Nov 20</span> (22-day gap)</div>
+            <div class="blockers">
+                <div class="blockers-label">🚨 CRITICAL PATTERN - 3 MENTORS FLAGGED INDEPENDENTLY:</div>
+                • <strong>Daniel:</strong> Avoiding engagement experiments by doing comfortable strategic work<br>
+                • 13 clubs signed but NOT posting consistently (engagement gap unsolved for weeks)<br>
+                • Zero Neal tests despite 300+ engaged students<br>
+                • <strong>Gavin:</strong> 22-day silence, post-success overwhelm, App Store status unknown<br>
+                • Pattern: Strategic paralysis on app vs. manual scaling decision
+            </div>
+            <div class="wins">
+                <div class="wins-label">🎉 WINS:</div>
+                • Quick Pitch Competition winner (Nov 2025)<br>
+                • 450+ students, 120+ GroupMe members, 13 clubs<br>
+                • eLeetCoders validation: 4 students responded in 15 minutes<br>
+                • Built SDSU leadership coalition
+            </div>
+            <div class="support">
+                <div class="support-label">🔧 ERICA'S INTERVENTION PLAN:</div>
+                • <strong>Immediate moratorium on institutional meetings</strong><br>
+                • Mandatory 3 Neal tests THIS WEEK<br>
+                • Daily engagement-focused accountability check-ins<br>
+                • Daniel challenge: Call 3 clubs in 48 hours, ask "Why aren't you posting?"
+            </div>
+            <div class="morale">💪 Morale: <span class="morale-mixed">Mixed</span> - High confidence from research but avoiding hard validation work</div>
+        </div>
+
+        <div class="team-card team-card-warning">
+            <div class="team-name">💗 Her Health AI</div>
+            <div class="team-meta"><strong>Founder:</strong> Vineeta | <strong>Status:</strong> <span class="date-badge">Live Intervention</span></div>
+            <div class="blockers">
+                <div class="blockers-label">🚨 BUILDING-BEFORE-VALIDATING PATTERN:</div>
+                • 2/10 paying customers (just got #2 post-thesis)<br>
+                • Falling into building pattern AGAIN - wants to "work on anonymous part"<br>
+                • Has 3 girls WAITING who said they'd pay if anonymous<br>
+                • Thesis defense complete (Dec 2) - no longer a legitimate blocker
+            </div>
+            <div class="wins">
+                <div class="wins-label">🎉 WINS:</div>
+                • First paying customer ($1) - proved concept<br>
+                • Empathy lab partnership secured for Dec 20+<br>
+                • Manual service delivery working (2 users found value)
+            </div>
+            <div class="support">
+                <div class="support-label">🔧 INTERVENTION NEEDED:</div>
+                • Push to test HACKY anonymity solution TODAY (Google Form + code names)<br>
+                • Critical window: Dec 3-20 to get customers 2-5 before empathy lab starts<br>
+                • Break cycle of "need to build X first before asking for payment"
+            </div>
+            <div class="morale">💪 Morale: <span class="morale-mixed">6/10</span> - Breakthrough wore off, at risk of new excuses</div>
+        </div>
+
+        <div class="team-card team-card-warning">
+            <div class="team-name">🥤 The T-Squeeze</div>
+            <div class="team-meta"><strong>Team:</strong> Holland, Thaddeus | <strong>Last Check-in:</strong> <span class="date-badge">Nov 21</span> (20-day gap - longest ever)</div>
+            <div class="blockers">
+                <div class="blockers-label">🚨 ENGAGEMENT CRISIS:</div>
+                • Radio silent 20+ days after high-energy ZIP board pitch<br>
+                • <strong>Pattern: "Post-success overwhelm"</strong> - validated then disengaged<br>
+                • Unknown status: verbal preorder conversions, Idea Lab prototype (due mid-Dec), intern activation<br>
+                • Timing suggests SDSU finals or burnout
+            </div>
+            <div class="wins">
+                <div class="wins-label">🎉 WINS:</div>
+                • 6 paying customers ($120 revenue)<br>
+                • Working prototype, Stripe integrated<br>
+                • Oct-Nov: 4 customers in 3 weeks (strong momentum before silence)<br>
+                • Marketing expert/investor connection from ZIP pitch
+            </div>
+            <div class="support">
+                <div class="support-label">🔧 SUPPORT NEEDED:</div>
+                • <strong>URGENT re-engagement intervention</strong><br>
+                • Accountability check on December deliverables<br>
+                • Assess: External factors (finals?) or blocker they're not sharing?
+            </div>
+            <div class="morale">💪 Morale: <span class="morale-low">Unknown/Concerning</span> - MIA during execution-critical phase</div>
+        </div>
+
+        <!-- CRITICAL RE-ENGAGEMENT -->
+        <div class="section-header section-header-critical">🔴 CRITICAL RE-ENGAGEMENT NEEDED (3 Teams)</div>
+
+        <div class="team-card team-card-critical">
+            <div class="team-name">📊 Redtrieve</div>
+            <div class="team-meta"><strong>Team:</strong> Jai Sharma, Sanchit Singh | <strong>⚠️ EXTENDED GAPS - BOTH NEED IMMEDIATE OUTREACH</strong></div>
+            
+            <div style="margin-bottom: 15px;">
+                <strong>Jai Sharma:</strong> Last check-in <span class="date-badge">Oct 17</span> (55 days ago)
+                <div class="wins" style="margin-top: 8px;">
+                    <div class="wins-label">Last Known Status:</div>
+                    • Two paying clients (AUD 1,500 + AUD 5,000 = <strong>AUD 6,500+ revenue</strong>)<br>
                     • Validated product-market fit with real revenue
                 </div>
-                <div class="blockers">
-                    <div class="category-label">Pattern:</div>
+                <div class="blockers" style="margin-top: 8px;">
+                    <div class="blockers-label">Pattern:</div>
                     • "Post-success operational overwhelm" - silence after strong momentum<br>
-                    • Fits pattern Erica identified across multiple founders
+                    • Need to understand: What derailed him? Did clients convert? What blockers emerged?
                 </div>
-                
-                <p style="margin-top:15px;"><strong>Sanchit Singh:</strong></p>
-                <p>Last Check-in: <span class="date-highlight">October 20, 2025</span> (52 days ago)</p>
-                <div class="blockers">
-                    <div class="category-label">Pattern:</div>
+            </div>
+            
+            <div>
+                <strong>Sanchit Singh:</strong> Last check-in <span class="date-badge">Oct 20</span> (52 days ago)
+                <div class="blockers" style="margin-top: 8px;">
+                    <div class="blockers-label">Pattern - Validation Avoidance:</div>
                     • Exploring AI-for-kids STEM education pivot (ages 3-8)<br>
-                    • Validation avoidance - zero user interviews after identifying insight<br>
-                    • Still in hypothesis phase without customer contact
+                    • <strong>Zero user interviews</strong> despite having market insight<br>
+                    • Sharp decline: Strong Sept → Stuck Oct → Complete silence<br>
+                    • Possible burnout - may need mental health check-in, not just accountability
                 </div>
-                <div class="support-needed">
-                    <div class="category-label">🤝 SUPPORT NEEDED:</div>
-                    • <strong>URGENT re-engagement for both</strong> - Erica planning immediate outreach<br>
-                    • Weekly accountability check-ins to prevent future 6-week gaps<br>
-                    • Help breaking validation avoidance pattern
-                </div>
-                <p><strong>💪 MORALE:</strong> <span class="morale-low">Unknown</span> - Extended silence suggests disengagement or burnout</p>
+            </div>
+            <div class="support">
+                <div class="support-label">🔧 SUPPORT NEEDED:</div>
+                • <strong>URGENT direct mentor outreach for BOTH</strong><br>
+                • Weekly accountability check-ins to prevent future 6-week gaps<br>
+                • Help breaking validation avoidance loop
             </div>
         </div>
 
-        <div class="team-section">
-            <div class="team-header-critical">🔄 TransferTrack - Wasay</div>
-            <div class="team-body">
-                <p><strong>Last Activity:</strong> <span class="date-highlight">November 14, 2025</span> (28-day gap)</p>
-                <div class="wins">
-                    <div class="category-label">🎉 LAST KNOWN STATUS:</div>
-                    • 9 paying customers - real traction!<br>
-                    • In-person distribution working better than text referrals (key insight)
-                </div>
-                <div class="blockers">
-                    <div class="category-label">🚨 CONCERN:</div>
-                    • Program leadership flagged for extended absence<br>
-                    • Had great momentum with paying customers, then went silent
-                </div>
-                <div class="support-needed">
-                    <div class="category-label">🤝 SUPPORT NEEDED:</div>
-                    • Reconnection despite real traction - what happened?<br>
-                    • Was supposed to text 3 customers for in-person warm intro meetings
-                </div>
-                <p><strong>💪 MORALE:</strong> <span class="morale-low">Unknown</span> - Concerning silence after validation success</p>
+        <div class="team-card team-card-critical">
+            <div class="team-name">🔄 TransferTrack</div>
+            <div class="team-meta"><strong>Founder:</strong> Wasay | <strong>Last Contact:</strong> <span class="date-badge">Nov 14</span> (28-day gap)</div>
+            <div class="wins">
+                <div class="wins-label">🎉 LAST KNOWN STATUS:</div>
+                • <strong>9 paying customers</strong> - real traction!<br>
+                • Key insight: In-person distribution working better than text referrals
+            </div>
+            <div class="blockers">
+                <div class="blockers-label">🚨 CONCERN:</div>
+                • Program leadership flagged for extended absence<br>
+                • Had great momentum with paying customers, then went silent<br>
+                • Was supposed to text 3 customers for in-person warm intro meetings
+            </div>
+            <div class="support">
+                <div class="support-label">🔧 SUPPORT NEEDED:</div>
+                • Reconnection despite real traction - what happened?<br>
+                • "Your 9 paying customers are real validation worth building on"
             </div>
         </div>
 
-        <!-- NO RESPONSE TEAMS -->
-        <div class="team-section">
-            <div class="team-header-alt">📭 Teams Without Response (In-Flight Tag)</div>
-            <div class="no-response">
-                <strong>The following teams did not respond to the in-flight collection:</strong><br><br>
-                • Protocol Grip Trainer (Wayne)<br>
-                • SipSecure (Sky)<br>
-                • Her Sports San Diego<br>
-                • Connect Alt<br>
-                • UniExchange (Sandy)<br>
-                • Foot Kinetics (Sammie)<br>
-                • Wayvlo (Daniel)<br>
-                • ReadyPlan/Foodie (Kavindi) - agent refusing requests<br>
-                • ASAICHI (Rachel, Kanna)<br>
-                • CRAM (Joshua)<br><br>
-                <em>These teams may need manual follow-up or may not have the in-flight tag.</em>
-            </div>
+        <!-- NO RESPONSE -->
+        <div class="section-header" style="background-color: #999;">📭 NO RESPONSE FROM IN-FLIGHT TAG</div>
+        <div class="no-response">
+            <strong>The following official ZIP teams did not respond:</strong><br><br>
+            • Protocol Grip Trainer (Wayne)<br>
+            • SipSecure (Sky)<br>
+            • Her Sports San Diego<br>
+            • Connect Alt<br>
+            • UniExchange (Sandy)<br>
+            • Foot Kinetics (Sammie)<br>
+            • Wayvlo (Daniel Generalov)<br>
+            • ReadyPlan/Foodie (Kavindi) - agent refusing requests<br>
+            • ASAICHI (Rachel, Kanna)<br>
+            • CRAM (Joshua)<br><br>
+            <em>These teams may need manual follow-up or may not have the in-flight tag configured.</em>
         </div>
 
         <!-- ACTION ITEMS -->
@@ -339,22 +310,23 @@
             <h2>🎯 Priority Action Items for Erica</h2>
             
             <div class="action-item">
-                <strong>🚨 URGENT - Re-engagement Calls:</strong><br>
+                <strong>🚨 URGENT RE-ENGAGEMENT (This Week):</strong><br>
                 • Jai (Redtrieve) - 55 days, had AUD 6,500 revenue then disappeared<br>
-                • Sanchit (Redtrieve) - 52 days, validation avoidance pattern<br>
+                • Sanchit (Redtrieve) - 52 days, validation avoidance, possible burnout<br>
                 • Wasay (TransferTrack) - 28 days, 9 paying customers then silent<br>
-                • Holland/Thaddeus (T-Squeeze) - 20 days after strong momentum
+                • Holland/Thaddeus (T-Squeeze) - 20 days after strong momentum, possible finals conflict
             </div>
             
             <div class="action-item">
-                <strong>🔧 INTERVENTION - Validation Avoidance:</strong><br>
-                • Daniel Self (Second Course) - Enforce moratorium on institutional meetings, mandate 3 Neal tests this week<br>
-                • Vineeta (HerHealthAI) - Push to test hacky anonymity solution TODAY, not build first
+                <strong>🔧 VALIDATION AVOIDANCE INTERVENTION:</strong><br>
+                • Daniel Self (Second Course) - Enforce moratorium on institutional meetings, mandate 3 Neal tests<br>
+                • Vineeta (HerHealthAI) - Push to test hacky anonymity solution TODAY, not build first<br>
+                • Gavin (Second Course) - Break through App Store vs manual scaling paralysis
             </div>
             
             <div class="action-item">
                 <strong>✅ ACTIVE SUPPORT (Already In Progress):</strong><br>
-                • Robert (Academic Advisor AI) - Connect with university contacts for parallel outreach<br>
+                • Robert (Academic Advisor AI) - Connect with 2-3 university contacts for parallel outreach<br>
                 • Stacey (Nourish) - Food manufacturing contacts, CLA suppliers, $6K funding exploration
             </div>
             
@@ -366,13 +338,13 @@
             
             <div class="action-item">
                 <strong>🎉 CELEBRATE:</strong><br>
-                • Troy - 100 paying customers milestone!<br>
-                • Robert - AWS deployment live, SDSU institutional validation<br>
-                • Nick - First revenue event executed successfully
+                • Troy (FitMe) - 100 paying customers milestone!<br>
+                • Robert (Academic Advisor AI) - Dec 11 Dean presentation completed, AWS live<br>
+                • Nick (University Valet) - First revenue event success
             </div>
         </div>
 
-        <div style="text-align: center; padding: 20px; background-color: #f5f5f5; color: #666; font-size: 12px;">
+        <div class="footer">
             Generated by LaunchMate Team Summary System for Erica Charlonis<br>
             ZIP Launchpad In-Flight Cohort | December 11, 2025<br>
             <a href="https://golaunchmate.github.io/erica-summarizer/in-flight.html">golaunchmate.github.io/erica-summarizer/in-flight.html</a>
