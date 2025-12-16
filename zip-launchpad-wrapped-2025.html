@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZIP Launchpad Wrapped 2025 - In-Flight Cohort</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        .hero-content { position: relative; z-index: 1; }
+        
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+        }
+        
+        .hero .subtitle {
+            font-size: 28px;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .hero .cohort-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 42px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, #667eea, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .big-stat {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border-radius: 30px;
+            padding: 60px 40px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .big-stat-number {
+            font-size: 120px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00f5d4, #00bbf9, #9b5de5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+        
+        .big-stat-label {
+            font-size: 24px;
+            font-weight: 300;
+            margin-top: 15px;
+            opacity: 0.9;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .stat-card .emoji { font-size: 48px; margin-bottom: 15px; }
+        .stat-card .number { font-size: 48px; font-weight: 700; color: #00f5d4; }
+        .stat-card .label { font-size: 16px; opacity: 0.8; margin-top: 10px; }
+        
+        .superlative {
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .superlative::after {
+            content: '🏆';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 80px;
+            opacity: 0.3;
+        }
+        
+        .superlative-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+        
+        .superlative-winner {
+            font-size: 32px;
+            font-weight: 700;
+        }
+        
+        .superlative-detail {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-top: 8px;
+        }
+        
+        .superlative.purple { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .superlative.blue { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .superlative.green { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+        .superlative.pink { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .superlative.orange { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #667eea, #f093fb, #00f5d4);
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding: 25px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 30px;
+            width: 16px;
+            height: 16px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid #1a1a2e;
+        }
+        
+        .timeline-date {
+            font-size: 14px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .timeline-title { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+        .timeline-detail { font-size: 15px; opacity: 0.8; }
+        
+        .team-shoutouts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .shoutout {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px;
+            border-left: 4px solid;
+            transition: transform 0.3s;
+        }
+        
+        .shoutout:hover { transform: scale(1.02); }
+        
+        .shoutout.gold { border-color: #ffd700; }
+        .shoutout.silver { border-color: #c0c0c0; }
+        .shoutout.bronze { border-color: #cd7f32; }
+        .shoutout.teal { border-color: #00f5d4; }
+        
+        .shoutout-name { font-size: 22px; font-weight: 700; margin-bottom: 5px; }
+        .shoutout-founder { font-size: 14px; opacity: 0.7; margin-bottom: 15px; }
+        .shoutout-stat { font-size: 28px; font-weight: 700; color: #00f5d4; }
+        .shoutout-label { font-size: 13px; opacity: 0.7; }
+        
+        .footer {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .footer h2 { font-size: 36px; margin-bottom: 15px; }
+        .footer p { font-size: 18px; opacity: 0.9; max-width: 600px; margin: 0 auto 30px; }
+        .footer .credit { font-size: 12px; opacity: 0.6; margin-top: 40px; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 48px; }
+            .hero .subtitle { font-size: 20px; }
+            .big-stat-number { font-size: 72px; }
+            .section-title { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>2025 WRAPPED</h1>
+            <div class="subtitle">ZIP Launchpad In-Flight Cohort</div>
+            <div class="cohort-badge">🚀 Your Year in Startups</div>
+        </div>
+    </div>
+
+    <!-- THE BIG NUMBER -->
+    <div class="section">
+        <div class="big-stat">
+            <div class="big-stat-number">123+</div>
+            <div class="big-stat-label">Paying Customers Acquired Across All Teams</div>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="emoji">💰</div>
+                <div class="number">$8K+</div>
+                <div class="label">Combined Revenue Generated</div>
+            </div>
+            <div class="stat-card">
+                <div class="emoji">🧪</div>
+                <div class="number">50+</div>
+                <div class="label">Neal Tests Attempted</div>
+            </div>
+            <div class="stat-card">
+                <div class="emoji">👥</div>
+                <div class="number">750+</div>
+                <div class="label">Users Reached</div>
+            </div>
+            <div class="stat-card">
+                <div class="emoji">🏆</div>
+                <div class="number">4</div>
+                <div class="label">Pitch Competition Wins</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUPERLATIVES -->
+    <div class="section">
+        <div class="section-title">🏆 The Superlatives</div>
+        
+        <div class="superlative">
+            <div class="superlative-title">💯 Most Customers</div>
+            <div class="superlative-winner">FitMe - Troy Grandi</div>
+            <div class="superlative-detail">100 paying customers on web app with 30% subscription conversion</div>
+        </div>
+        
+        <div class="superlative purple">
+            <div class="superlative-title">🎓 Biggest Institutional Win</div>
+            <div class="superlative-winner">Academic Advisor AI - Robert Sanchez</div>
+            <div class="superlative-detail">AWS deployment + SDSU Dean presentation + Assistant Dean pilot commitment</div>
+        </div>
+        
+        <div class="superlative blue">
+            <div class="superlative-title">💵 Highest Single Deal</div>
+            <div class="superlative-winner">Redtrieve - Jai Sharma</div>
+            <div class="superlative-detail">AUD $5,000 client deal (plus AUD $1,500 = AUD $6,500 total revenue)</div>
+        </div>
+        
+        <div class="superlative green">
+            <div class="superlative-title">🚀 Fastest User Acquisition</div>
+            <div class="superlative-winner">Second Course - Daniel & Gavin</div>
+            <div class="superlative-detail">450+ students, 120+ GroupMe members, 13 campus clubs in months</div>
+        </div>
+        
+        <div class="superlative pink">
+            <div class="superlative-title">⚡ Speed to First Revenue</div>
+            <div class="superlative-winner">The T-Squeeze - Holland & Thaddeus</div>
+            <div class="superlative-detail">0 to 6 paying customers ($120) in just 3 weeks</div>
+        </div>
+        
+        <div class="superlative orange">
+            <div class="superlative-title">🔄 Best Pivot Response</div>
+            <div class="superlative-winner">Nourish - Stacey Lehrer</div>
+            <div class="superlative-detail">Reformulated product based on customer feedback, secured 4 paying customers</div>
+        </div>
+    </div>
+
+    <!-- YEAR IN MOMENTS -->
+    <div class="section">
+        <div class="section-title">📅 Year in Moments</div>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">SUMMER 2025</div>
+                <div class="timeline-title">🌱 Cohort Kicks Off</div>
+                <div class="timeline-detail">In-Flight founders begin their validation journeys, armed with Neal Test methodology and mentor support</div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">SEPTEMBER 2025</div>
+                <div class="timeline-title">🏆 Competition Season</div>
+                <div class="timeline-detail">WBENC 2nd place (ASAICHI), multiple pitch wins across the cohort</div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">OCTOBER 2025</div>
+                <div class="timeline-title">💰 Revenue Milestones</div>
+                <div class="timeline-detail">Jai closes AUD $6,500 in deals • Troy hits 100 customers • Wasay reaches 9 paying customers</div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">NOVEMBER 2025</div>
+                <div class="timeline-title">🎯 Validation Wins</div>
+                <div class="timeline-detail">Quick Pitch win for Second Course • T-Squeeze hits 6 customers • Nick executes first valet event</div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">DECEMBER 2025</div>
+                <div class="timeline-title">🎓 Institutional Breakthrough</div>
+                <div class="timeline-detail">Robert presents to SDSU Dean • AWS deployment live • Parallel university outreach begins</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TEAM SHOUTOUTS -->
+    <div class="section">
+        <div class="section-title">👏 Team Shoutouts</div>
+        
+        <div class="team-shoutouts">
+            <div class="shoutout gold">
+                <div class="shoutout-name">👗 FitMe</div>
+                <div class="shoutout-founder">Troy Grandi</div>
+                <div class="shoutout-stat">100</div>
+                <div class="shoutout-label">Paying Customers</div>
+            </div>
+            
+            <div class="shoutout silver">
+                <div class="shoutout-name">🎓 Academic Advisor AI</div>
+                <div class="shoutout-founder">Robert Sanchez</div>
+                <div class="shoutout-stat">SDSU</div>
+                <div class="shoutout-label">Institutional Pilot Secured</div>
+            </div>
+            
+            <div class="shoutout bronze">
+                <div class="shoutout-name">📊 Redtrieve</div>
+                <div class="shoutout-founder">Jai Sharma</div>
+                <div class="shoutout-stat">$6.5K</div>
+                <div class="shoutout-label">AUD Revenue</div>
+            </div>
+            
+            <div class="shoutout teal">
+                <div class="shoutout-name">🍽️ Second Course</div>
+                <div class="shoutout-founder">Daniel & Gavin</div>
+                <div class="shoutout-stat">450+</div>
+                <div class="shoutout-label">Students Reached</div>
+            </div>
+            
+            <div class="shoutout teal">
+                <div class="shoutout-name">🔄 TransferTrack</div>
+                <div class="shoutout-founder">Wasay</div>
+                <div class="shoutout-stat">9</div>
+                <div class="shoutout-label">Paying Customers</div>
+            </div>
+            
+            <div class="shoutout teal">
+                <div class="shoutout-name">🥤 The T-Squeeze</div>
+                <div class="shoutout-founder">Holland & Thaddeus</div>
+                <div class="shoutout-stat">6</div>
+                <div class="shoutout-label">Customers in 3 Weeks</div>
+            </div>
+            
+            <div class="shoutout teal">
+                <div class="shoutout-name">🌿 Nourish</div>
+                <div class="shoutout-founder">Stacey Lehrer</div>
+                <div class="shoutout-stat">4</div>
+                <div class="shoutout-label">Paying Customers</div>
+            </div>
+            
+            <div class="shoutout teal">
+                <div class="shoutout-name">🚗 University Valet</div>
+                <div class="shoutout-founder">Nick Bernal</div>
+                <div class="shoutout-stat">21</div>
+                <div class="shoutout-label">Pre-Sales Validated</div>
+            </div>
+            
+            <div class="shoutout teal">
+                <div class="shoutout-name">💗 HerHealthAI</div>
+                <div class="shoutout-founder">Vineeta</div>
+                <div class="shoutout-stat">2</div>
+                <div class="shoutout-label">Paying Customers</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LESSONS LEARNED -->
+    <div class="section">
+        <div class="section-title">💡 Cohort Insights</div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="emoji">🎯</div>
+                <div class="number">#1</div>
+                <div class="label">Pattern: "Post-success overwhelm" - founders validating then going silent</div>
+            </div>
+            <div class="stat-card">
+                <div class="emoji">🔧</div>
+                <div class="number">#2</div>
+                <div class="label">Pattern: "Building before validating" - comfort in code, fear of customers</div>
+            </div>
+            <div class="stat-card">
+                <div class="emoji">🏃</div>
+                <div class="number">#3</div>
+                <div class="label">Pattern: "Strategic work as avoidance" - research over revenue tests</div>
+            </div>
+            <div class="stat-card">
+                <div class="emoji">✅</div>
+                <div class="number">#4</div>
+                <div class="label">What works: Mentor intervention + accountability check-ins</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <h2>Here's to 2026 🥂</h2>
+        <p>From first customers to institutional pilots, this cohort proved that real validation beats perfect planning. Keep shipping, keep testing, keep learning.</p>
+        <div class="credit">
+            Generated by LaunchMate Team Summary System<br>
+            ZIP Launchpad In-Flight Cohort | December 2025<br>
+            🚀 Powered by SDSU ZIP Launchpad
+        </div>
+    </div>
+
+</body>
+</html>
