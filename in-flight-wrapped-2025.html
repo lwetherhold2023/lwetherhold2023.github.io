@@ -6,347 +6,75 @@
     <title>In-Flight Founder Wrapped 2025</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap');
-        
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
-            min-height: 100vh;
-            color: white;
-            overflow-x: hidden;
-        }
-        
-        /* Confetti Canvas */
-        #confetti-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1000;
-        }
-        
-        /* Hero */
-        .hero {
-            min-height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            position: relative;
-        }
-        
-        .hero h1 {
-            font-size: 56px;
-            font-weight: 900;
-            margin-bottom: 10px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease forwards;
-        }
-        
-        .hero .subtitle {
-            font-size: 24px;
-            font-weight: 300;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.2s forwards;
-        }
-        
-        .hero .tap-hint {
-            margin-top: 30px;
-            font-size: 14px;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.4s forwards, pulse 2s ease-in-out infinite 1.2s;
-        }
-        
-        @keyframes fadeInUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 0.7; }
-            50% { opacity: 1; }
-        }
-        
-        /* Navigation Tabs */
-        .nav-tabs {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            padding: 30px 20px;
-            background: rgba(0,0,0,0.3);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-        }
-        
-        .nav-tab {
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.1);
-            border: none;
-            border-radius: 25px;
-            color: white;
-            font-family: 'Poppins', sans-serif;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .nav-tab:hover, .nav-tab.active {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            transform: scale(1.05);
-        }
-        
-        /* Founder Cards Container */
-        .founders-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        
-        /* Founder Card */
-        .founder-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
-            border-radius: 25px;
-            margin-bottom: 30px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.1);
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            opacity: 0;
-            transform: translateY(50px);
-        }
-        
-        .founder-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .founder-card:hover {
-            transform: translateY(-5px) scale(1.01);
-            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.3);
-        }
-        
-        .founder-card.expanded {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(240, 147, 251, 0.1) 100%);
-        }
-        
-        .card-header {
-            padding: 30px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .founder-emoji {
-            font-size: 60px;
-            width: 80px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 20px;
-            transition: transform 0.3s;
-        }
-        
-        .founder-card:hover .founder-emoji {
-            transform: rotate(-5deg) scale(1.1);
-        }
-        
-        .founder-info h2 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-        
-        .founder-info .startup {
-            font-size: 16px;
-            opacity: 0.7;
-        }
-        
-        .expand-icon {
-            margin-left: auto;
-            font-size: 24px;
-            transition: transform 0.3s;
-        }
-        
-        .founder-card.expanded .expand-icon {
-            transform: rotate(180deg);
-        }
-        
-        /* Card Content (Hidden by default) */
-        .card-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease, padding 0.3s;
-        }
-        
-        .founder-card.expanded .card-content {
-            max-height: 1000px;
-            padding: 0 30px 30px;
-        }
-        
-        /* Stats Grid */
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-        
-        .stat-box {
-            background: rgba(0,0,0,0.3);
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-        }
-        
-        .stat-box .number {
-            font-size: 32px;
-            font-weight: 700;
-            color: #00f5d4;
-            display: block;
-        }
-        
-        .stat-box .label {
-            font-size: 12px;
-            opacity: 0.7;
-            margin-top: 5px;
-        }
-        
-        /* Highlights */
-        .highlight-section {
-            margin-bottom: 20px;
-        }
-        
-        .highlight-title {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0.6;
-            margin-bottom: 10px;
-        }
-        
-        .highlight-item {
-            background: linear-gradient(135deg, rgba(0,245,212,0.2), rgba(102,126,234,0.2));
-            padding: 15px 20px;
-            border-radius: 12px;
-            margin-bottom: 10px;
-            border-left: 3px solid #00f5d4;
-            font-size: 15px;
-        }
-        
-        .highlight-item.win { border-left-color: #38ef7d; background: linear-gradient(135deg, rgba(56,239,125,0.2), rgba(17,153,142,0.1)); }
-        .highlight-item.challenge { border-left-color: #fa709a; background: linear-gradient(135deg, rgba(250,112,154,0.2), rgba(254,225,64,0.1)); }
-        .highlight-item.learning { border-left-color: #667eea; }
-        
-        /* Year Badge */
-        .year-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        /* Animated Counter */
-        .counter {
-            display: inline-block;
-        }
-        
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        
-        .footer h2 { font-size: 32px; margin-bottom: 15px; }
-        .footer p { opacity: 0.8; max-width: 500px; margin: 0 auto; }
-        
-        /* Scroll Progress */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea, #f093fb, #00f5d4);
-            z-index: 1001;
-            transition: width 0.1s;
-        }
-        
-        /* Fun Button */
-        .confetti-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border: none;
-            font-size: 28px;
-            cursor: pointer;
-            z-index: 999;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 5px 20px rgba(102,126,234,0.4);
-        }
-        
-        .confetti-btn:hover {
-            transform: scale(1.1) rotate(10deg);
-            box-shadow: 0 10px 30px rgba(102,126,234,0.6);
-        }
-        
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 36px; }
-            .founder-info h2 { font-size: 22px; }
-            .nav-tab { padding: 8px 15px; font-size: 12px; }
-        }
+        body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%); min-height: 100vh; color: white; overflow-x: hidden; }
+        #confetti-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1000; }
+        .scroll-progress { position: fixed; top: 0; left: 0; height: 4px; background: linear-gradient(90deg, #667eea, #f093fb, #00f5d4); z-index: 1001; width: 0%; }
+        .hero { min-height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); }
+        .hero h1 { font-size: 56px; font-weight: 900; margin-bottom: 10px; opacity: 0; transform: translateY(30px); animation: fadeInUp 0.8s ease forwards; }
+        .hero .subtitle { font-size: 24px; font-weight: 300; opacity: 0; animation: fadeInUp 0.8s ease 0.2s forwards; }
+        .hero .tap-hint { margin-top: 30px; font-size: 14px; opacity: 0; animation: fadeInUp 0.8s ease 0.4s forwards; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        .nav-tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; padding: 20px; background: rgba(0,0,0,0.3); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
+        .nav-tab { padding: 10px 20px; background: rgba(255,255,255,0.1); border: none; border-radius: 25px; color: white; font-family: 'Poppins', sans-serif; font-size: 14px; cursor: pointer; transition: all 0.3s; }
+        .nav-tab:hover, .nav-tab.active { background: linear-gradient(135deg, #667eea, #764ba2); transform: scale(1.05); }
+        .founders-container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        .founder-card { background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%); border-radius: 25px; margin-bottom: 25px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: all 0.4s; opacity: 0; transform: translateY(40px); }
+        .founder-card.visible { opacity: 1; transform: translateY(0); }
+        .founder-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3); }
+        .founder-card.expanded { background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(240, 147, 251, 0.08) 100%); }
+        .card-header { padding: 25px; display: flex; align-items: center; gap: 20px; }
+        .founder-emoji { font-size: 50px; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 18px; transition: transform 0.3s; }
+        .founder-card:hover .founder-emoji { transform: rotate(-5deg) scale(1.1); }
+        .founder-info h2 { font-size: 24px; font-weight: 700; margin-bottom: 3px; }
+        .founder-info .startup { font-size: 14px; opacity: 0.7; }
+        .expand-icon { margin-left: auto; font-size: 20px; transition: transform 0.3s; }
+        .founder-card.expanded .expand-icon { transform: rotate(180deg); }
+        .card-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
+        .founder-card.expanded .card-content { max-height: 800px; padding: 0 25px 25px; }
+        .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 12px; margin-bottom: 20px; }
+        .stat-box { background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; text-align: center; }
+        .stat-box .number { font-size: 28px; font-weight: 700; color: #00f5d4; display: block; }
+        .stat-box .label { font-size: 11px; opacity: 0.7; margin-top: 5px; }
+        .year-badge { display: inline-block; background: linear-gradient(135deg, #667eea, #764ba2); padding: 6px 16px; border-radius: 15px; font-size: 12px; font-weight: 600; margin-bottom: 15px; }
+        .highlight-section { margin-bottom: 15px; }
+        .highlight-title { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; opacity: 0.6; margin-bottom: 8px; }
+        .highlight-item { background: linear-gradient(135deg, rgba(0,245,212,0.15), rgba(102,126,234,0.15)); padding: 12px 15px; border-radius: 10px; margin-bottom: 8px; border-left: 3px solid #00f5d4; font-size: 14px; }
+        .highlight-item.win { border-left-color: #38ef7d; background: linear-gradient(135deg, rgba(56,239,125,0.15), rgba(17,153,142,0.08)); }
+        .highlight-item.challenge { border-left-color: #fa709a; background: linear-gradient(135deg, rgba(250,112,154,0.15), rgba(254,225,64,0.08)); }
+        .confetti-btn { position: fixed; bottom: 25px; right: 25px; width: 55px; height: 55px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); border: none; font-size: 26px; cursor: pointer; z-index: 999; transition: transform 0.3s; box-shadow: 0 5px 20px rgba(102,126,234,0.4); }
+        .confetti-btn:hover { transform: scale(1.1) rotate(10deg); }
+        .footer { text-align: center; padding: 50px 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .footer h2 { font-size: 28px; margin-bottom: 10px; }
+        .footer p { opacity: 0.8; max-width: 500px; margin: 0 auto; font-size: 14px; }
+        .hidden { display: none !important; }
+        @media (max-width: 768px) { .hero h1 { font-size: 36px; } .founder-info h2 { font-size: 20px; } }
     </style>
 </head>
 <body>
-
     <div class="scroll-progress" id="scrollProgress"></div>
     <canvas id="confetti-canvas"></canvas>
-    
-    <button class="confetti-btn" onclick="launchConfetti()" title="Celebrate! 🎉">🎉</button>
+    <button class="confetti-btn" onclick="launchConfetti()" title="Celebrate!">🎉</button>
 
-    <!-- Hero -->
     <div class="hero">
         <h1>Your 2025 Wrapped</h1>
         <div class="subtitle">Individual Founder Edition</div>
         <div class="tap-hint">👇 Tap each founder to reveal their year</div>
     </div>
 
-    <!-- Navigation -->
     <div class="nav-tabs" id="navTabs">
-        <button class="nav-tab active" onclick="filterFounders('all')">All Founders</button>
-        <button class="nav-tab" onclick="filterFounders('revenue')">💰 Revenue</button>
-        <button class="nav-tab" onclick="filterFounders('customers')">👥 Customers</button>
-        <button class="nav-tab" onclick="filterFounders('institutional')">🎓 Institutional</button>
+        <button class="nav-tab active" data-filter="all">All Founders</button>
+        <button class="nav-tab" data-filter="revenue">💰 Revenue</button>
+        <button class="nav-tab" data-filter="customers">👥 Customers</button>
+        <button class="nav-tab" data-filter="institutional">🎓 Institutional</button>
     </div>
 
-    <!-- Founders -->
     <div class="founders-container" id="foundersContainer">
         
-        <!-- Troy Grandi -->
-        <div class="founder-card" data-tags="revenue,customers" onclick="toggleCard(this)">
+        <div class="founder-card" data-tags="revenue,customers">
             <div class="card-header">
                 <div class="founder-emoji">👗</div>
-                <div class="founder-info">
-                    <h2>Troy Grandi</h2>
-                    <div class="startup">FitMe - Virtual Try-On</div>
-                </div>
+                <div class="founder-info"><h2>Troy Grandi</h2><div class="startup">FitMe - Virtual Try-On</div></div>
                 <div class="expand-icon">▼</div>
             </div>
             <div class="card-content">
@@ -354,60 +82,43 @@
                 <div class="stats-row">
                     <div class="stat-box"><span class="number counter" data-target="100">0</span><div class="label">Customers</div></div>
                     <div class="stat-box"><span class="number">30%</span><div class="label">Conversion</div></div>
-                    <div class="stat-box"><span class="number">$2.99</span><div class="label">Subscription</div></div>
+                    <div class="stat-box"><span class="number">$2.99</span><div class="label">Sub Price</div></div>
                 </div>
                 <div class="highlight-section">
                     <div class="highlight-title">🎉 Biggest Wins</div>
                     <div class="highlight-item win">Hit 100 paying customers milestone</div>
-                    <div class="highlight-item win">Validated hybrid pricing model (subscription + credits)</div>
+                    <div class="highlight-item win">Validated hybrid pricing model</div>
                     <div class="highlight-item win">Rejected bad investor advice - trusted the data</div>
-                </div>
-                <div class="highlight-section">
-                    <div class="highlight-title">💡 Key Learning</div>
-                    <div class="highlight-item learning">Different customer segments have different willingness to pay - and that's okay</div>
                 </div>
             </div>
         </div>
 
-        <!-- Robert Sanchez -->
-        <div class="founder-card" data-tags="institutional" onclick="toggleCard(this)">
+        <div class="founder-card" data-tags="institutional">
             <div class="card-header">
                 <div class="founder-emoji">🎓</div>
-                <div class="founder-info">
-                    <h2>Robert Sanchez</h2>
-                    <div class="startup">Academic Advisor AI</div>
-                </div>
+                <div class="founder-info"><h2>Robert Sanchez</h2><div class="startup">Academic Advisor AI</div></div>
                 <div class="expand-icon">▼</div>
             </div>
             <div class="card-content">
                 <div class="year-badge">🏛️ Institutional Breakthrough</div>
                 <div class="stats-row">
-                    <div class="stat-box"><span class="number">SDSU</span><div class="label">Pilot Secured</div></div>
-                    <div class="stat-box"><span class="number">AWS</span><div class="label">Deployed</div></div>
-                    <div class="stat-box"><span class="number">90%</span><div class="label">Accuracy Goal</div></div>
+                    <div class="stat-box"><span class="number">SDSU</span><div class="label">Pilot</div></div>
+                    <div class="stat-box"><span class="number">AWS</span><div class="label">Live</div></div>
+                    <div class="stat-box"><span class="number">90%</span><div class="label">Goal</div></div>
                 </div>
                 <div class="highlight-section">
                     <div class="highlight-title">🎉 Biggest Wins</div>
                     <div class="highlight-item win">Presented to SDSU Dean (Dec 11)</div>
                     <div class="highlight-item win">Assistant Dean committed to pilot</div>
                     <div class="highlight-item win">AWS deployment live with gpt-4o-mini</div>
-                    <div class="highlight-item win">Secured AWS Activate credits ($1,000+)</div>
-                </div>
-                <div class="highlight-section">
-                    <div class="highlight-title">💡 Key Learning</div>
-                    <div class="highlight-item learning">De-risk by validating at multiple universities in parallel</div>
                 </div>
             </div>
         </div>
 
-        <!-- Jai Sharma -->
-        <div class="founder-card" data-tags="revenue" onclick="toggleCard(this)">
+        <div class="founder-card" data-tags="revenue">
             <div class="card-header">
                 <div class="founder-emoji">📊</div>
-                <div class="founder-info">
-                    <h2>Jai Sharma</h2>
-                    <div class="startup">Redtrieve</div>
-                </div>
+                <div class="founder-info"><h2>Jai Sharma</h2><div class="startup">Redtrieve</div></div>
                 <div class="expand-icon">▼</div>
             </div>
             <div class="card-content">
@@ -415,7 +126,6 @@
                 <div class="stats-row">
                     <div class="stat-box"><span class="number">$6.5K</span><div class="label">AUD Revenue</div></div>
                     <div class="stat-box"><span class="number counter" data-target="2">0</span><div class="label">Clients</div></div>
-                    <div class="stat-box"><span class="number">$5K</span><div class="label">Largest Deal</div></div>
                 </div>
                 <div class="highlight-section">
                     <div class="highlight-title">🎉 Biggest Wins</div>
@@ -423,20 +133,16 @@
                     <div class="highlight-item win">Validated product-market fit with real revenue</div>
                 </div>
                 <div class="highlight-section">
-                    <div class="highlight-title">⚠️ Challenge</div>
-                    <div class="highlight-item challenge">Post-success overwhelm led to 55-day silence - momentum matters!</div>
+                    <div class="highlight-title">⚠️ Learning</div>
+                    <div class="highlight-item challenge">Post-success overwhelm is real - maintain momentum!</div>
                 </div>
             </div>
         </div>
 
-        <!-- Daniel Self -->
-        <div class="founder-card" data-tags="customers" onclick="toggleCard(this)">
+        <div class="founder-card" data-tags="customers">
             <div class="card-header">
                 <div class="founder-emoji">🍽️</div>
-                <div class="founder-info">
-                    <h2>Daniel Self</h2>
-                    <div class="startup">Second Course</div>
-                </div>
+                <div class="founder-info"><h2>Daniel Self</h2><div class="startup">Second Course</div></div>
                 <div class="expand-icon">▼</div>
             </div>
             <div class="card-content">
@@ -444,85 +150,59 @@
                 <div class="stats-row">
                     <div class="stat-box"><span class="number counter" data-target="450">0</span><div class="label">Students</div></div>
                     <div class="stat-box"><span class="number counter" data-target="13">0</span><div class="label">Clubs</div></div>
-                    <div class="stat-box"><span class="number">🏆</span><div class="label">Quick Pitch Win</div></div>
+                    <div class="stat-box"><span class="number">🏆</span><div class="label">Pitch Win</div></div>
                 </div>
                 <div class="highlight-section">
                     <div class="highlight-title">🎉 Biggest Wins</div>
                     <div class="highlight-item win">Won Quick Pitch Competition</div>
                     <div class="highlight-item win">Built coalition with SDSU leadership</div>
-                    <div class="highlight-item win">Validated demand across 13 campus clubs</div>
-                </div>
-                <div class="highlight-section">
-                    <div class="highlight-title">⚠️ 2025's Learning</div>
-                    <div class="highlight-item challenge">Strategic work can become avoidance - revenue tests > research</div>
                 </div>
             </div>
         </div>
 
-        <!-- Gavin -->
-        <div class="founder-card" data-tags="customers" onclick="toggleCard(this)">
+        <div class="founder-card" data-tags="customers">
             <div class="card-header">
                 <div class="founder-emoji">📱</div>
-                <div class="founder-info">
-                    <h2>Gavin</h2>
-                    <div class="startup">Second Course</div>
-                </div>
+                <div class="founder-info"><h2>Gavin</h2><div class="startup">Second Course</div></div>
                 <div class="expand-icon">▼</div>
             </div>
             <div class="card-content">
                 <div class="year-badge">⚡ Community Builder</div>
                 <div class="stats-row">
-                    <div class="stat-box"><span class="number counter" data-target="120">0</span><div class="label">GroupMe Members</div></div>
-                    <div class="stat-box"><span class="number">15min</span><div class="label">Response Time</div></div>
-                    <div class="stat-box"><span class="number counter" data-target="4">0</span><div class="label">Neal Test Wins</div></div>
+                    <div class="stat-box"><span class="number counter" data-target="120">0</span><div class="label">GroupMe</div></div>
+                    <div class="stat-box"><span class="number">15m</span><div class="label">Response</div></div>
                 </div>
                 <div class="highlight-section">
                     <div class="highlight-title">🎉 Biggest Wins</div>
-                    <div class="highlight-item win">eLeetCoders partnership - 4 students responded in 15 minutes</div>
-                    <div class="highlight-item win">Built 120+ engaged GroupMe community</div>
-                </div>
-                <div class="highlight-section">
-                    <div class="highlight-title">💡 Key Learning</div>
-                    <div class="highlight-item learning">Explicit club branding increases trust and response rates</div>
+                    <div class="highlight-item win">eLeetCoders: 4 students in 15 minutes</div>
+                    <div class="highlight-item win">Built 120+ engaged community</div>
                 </div>
             </div>
         </div>
 
-        <!-- Wasay -->
-        <div class="founder-card" data-tags="revenue,customers" onclick="toggleCard(this)">
+        <div class="founder-card" data-tags="revenue,customers">
             <div class="card-header">
                 <div class="founder-emoji">🔄</div>
-                <div class="founder-info">
-                    <h2>Wasay</h2>
-                    <div class="startup">TransferTrack</div>
-                </div>
+                <div class="founder-info"><h2>Wasay</h2><div class="startup">TransferTrack</div></div>
                 <div class="expand-icon">▼</div>
             </div>
             <div class="card-content">
                 <div class="year-badge">🎯 Validation Champion</div>
                 <div class="stats-row">
-                    <div class="stat-box"><span class="number counter" data-target="9">0</span><div class="label">Paying Customers</div></div>
+                    <div class="stat-box"><span class="number counter" data-target="9">0</span><div class="label">Customers</div></div>
                 </div>
                 <div class="highlight-section">
                     <div class="highlight-title">🎉 Biggest Wins</div>
-                    <div class="highlight-item win">Acquired 9 paying customers through direct outreach</div>
-                    <div class="highlight-item win">Discovered in-person distribution > text referrals</div>
-                </div>
-                <div class="highlight-section">
-                    <div class="highlight-title">💡 Key Learning</div>
-                    <div class="highlight-item learning">Channel matters: warm intros beat cold outreach</div>
+                    <div class="highlight-item win">9 paying customers through direct outreach</div>
+                    <div class="highlight-item win">Discovered: in-person > text referrals</div>
                 </div>
             </div>
         </div>
 
-        <!-- Holland -->
-        <div class="founder-card" data-tags="revenue,customers" onclick="toggleCard(this)">
+        <div class="founder-card" data-tags="revenue,customers">
             <div class="card-header">
                 <div class="founder-emoji">🥤</div>
-                <div class="founder-info">
-                    <h2>Holland Peil</h2>
-                    <div class="startup">The T-Squeeze</div>
-                </div>
+                <div class="founder-info"><h2>Holland & Thaddeus</h2><div class="startup">The T-Squeeze</div></div>
                 <div class="expand-icon">▼</div>
             </div>
             <div class="card-content">
@@ -530,58 +210,41 @@
                 <div class="stats-row">
                     <div class="stat-box"><span class="number counter" data-target="6">0</span><div class="label">Customers</div></div>
                     <div class="stat-box"><span class="number">$120</span><div class="label">Revenue</div></div>
-                    <div class="stat-box"><span class="number">3wks</span><div class="label">0 to 6</div></div>
+                    <div class="stat-box"><span class="number">3wk</span><div class="label">0 to 6</div></div>
                 </div>
                 <div class="highlight-section">
                     <div class="highlight-title">🎉 Biggest Wins</div>
-                    <div class="highlight-item win">0 to 6 paying customers in just 3 weeks</div>
-                    <div class="highlight-item win">Built working prototype with Stripe integration</div>
-                    <div class="highlight-item win">Connected with marketing expert/investor at ZIP</div>
-                </div>
-                <div class="highlight-section">
-                    <div class="highlight-title">💡 Key Learning</div>
-                    <div class="highlight-item learning">Live demos convert better than descriptions</div>
+                    <div class="highlight-item win">0 to 6 customers in just 3 weeks</div>
+                    <div class="highlight-item win">Working prototype with Stripe</div>
+                    <div class="highlight-item win">Whole Foods product testing</div>
                 </div>
             </div>
         </div>
 
-        <!-- Stacey -->
-        <div class="founder-card" data-tags="customers" onclick="toggleCard(this)">
+        <div class="founder-card" data-tags="customers">
             <div class="card-header">
                 <div class="founder-emoji">🌿</div>
-                <div class="founder-info">
-                    <h2>Stacey Lehrer</h2>
-                    <div class="startup">Nourish (kelpii)</div>
-                </div>
+                <div class="founder-info"><h2>Stacey Lehrer</h2><div class="startup">Nourish (kelpii)</div></div>
                 <div class="expand-icon">▼</div>
             </div>
             <div class="card-content">
                 <div class="year-badge">🔄 Best Pivot Response</div>
                 <div class="stats-row">
-                    <div class="stat-box"><span class="number counter" data-target="4">0</span><div class="label">Paying Customers</div></div>
+                    <div class="stat-box"><span class="number counter" data-target="4">0</span><div class="label">Customers</div></div>
                     <div class="stat-box"><span class="number">+9</span><div class="label">Pipeline</div></div>
                 </div>
                 <div class="highlight-section">
                     <div class="highlight-title">🎉 Biggest Wins</div>
-                    <div class="highlight-item win">Reformulated product based on customer feedback</div>
-                    <div class="highlight-item win">Secured 4 paying customers through Neal test</div>
-                    <div class="highlight-item win">Customer-responsive iteration noted as exemplary</div>
-                </div>
-                <div class="highlight-section">
-                    <div class="highlight-title">💡 Key Learning</div>
-                    <div class="highlight-item learning">Listen to customers, iterate fast, don't get attached to v1</div>
+                    <div class="highlight-item win">Reformulated based on feedback</div>
+                    <div class="highlight-item win">Customer-responsive iteration exemplary</div>
                 </div>
             </div>
         </div>
 
-        <!-- Nick -->
-        <div class="founder-card" data-tags="revenue" onclick="toggleCard(this)">
+        <div class="founder-card" data-tags="revenue">
             <div class="card-header">
                 <div class="founder-emoji">🚗</div>
-                <div class="founder-info">
-                    <h2>Nick Bernal</h2>
-                    <div class="startup">University Valet</div>
-                </div>
+                <div class="founder-info"><h2>Nick Bernal</h2><div class="startup">University Valet</div></div>
                 <div class="expand-icon">▼</div>
             </div>
             <div class="card-content">
@@ -589,46 +252,222 @@
                 <div class="stats-row">
                     <div class="stat-box"><span class="number counter" data-target="21">0</span><div class="label">Pre-Sales</div></div>
                     <div class="stat-box"><span class="number">$105</span><div class="label">Validated</div></div>
-                    <div class="stat-box"><span class="number">PATS</span><div class="label">Partnership</div></div>
                 </div>
                 <div class="highlight-section">
                     <div class="highlight-title">🎉 Biggest Wins</div>
-                    <div class="highlight-item win">First revenue event executed with operational excellence</div>
-                    <div class="highlight-item win">Strategic PATS partnership for institutional scaling</div>
-                    <div class="highlight-item win">Student adoption higher than faculty (market insight)</div>
-                </div>
-                <div class="highlight-section">
-                    <div class="highlight-title">💡 Key Learning</div>
-                    <div class="highlight-item learning">Timing matters: arrive 15 min before first guest, not event start</div>
+                    <div class="highlight-item win">First revenue event executed perfectly</div>
+                    <div class="highlight-item win">PATS partnership for scaling</div>
                 </div>
             </div>
         </div>
 
-        <!-- Vineeta -->
-        <div class="founder-card" data-tags="customers" onclick="toggleCard(this)">
+        <div class="founder-card" data-tags="customers">
             <div class="card-header">
                 <div class="founder-emoji">💗</div>
-                <div class="founder-info">
-                    <h2>Vineeta</h2>
-                    <div class="startup">HerHealthAI</div>
-                </div>
+                <div class="founder-info"><h2>Vineeta</h2><div class="startup">HerHealthAI</div></div>
                 <div class="expand-icon">▼</div>
             </div>
             <div class="card-content">
                 <div class="year-badge">🌱 Foundation Year</div>
                 <div class="stats-row">
-                    <div class="stat-box"><span class="number counter" data-target="2">0</span><div class="label">Paying Customers</div></div>
-                    <div class="stat-box"><span class="number">Dec 20</span><div class="label">Empathy Lab</div></div>
+                    <div class="stat-box"><span class="number counter" data-target="2">0</span><div class="label">Customers</div></div>
+                    <div class="stat-box"><span class="number">Dec20</span><div class="label">Empathy Lab</div></div>
                 </div>
                 <div class="highlight-section">
                     <div class="highlight-title">🎉 Biggest Wins</div>
-                    <div class="highlight-item win">First paying customer - proved people will pay</div>
-                    <div class="highlight-item win">Secured empathy lab partnership for Dec 20+</div>
-                    <div class="highlight-item win">Manual service delivery validated (2 users found value)</div>
-                </div>
-                <div class="highlight-section">
-                    <div class="highlight-title">💡 2026 Focus</div>
-                    <div class="highlight-item learning">Test hacky solutions before building polished ones</div>
+                    <div class="highlight-item win">First paying customer - proved concept</div>
+                    <div class="highlight-item win">Empathy lab partnership secured</div>
                 </div>
             </div>
-        </div
+        </div>
+
+        <div class="founder-card" data-tags="customers">
+            <div class="card-header">
+                <div class="founder-emoji">🔬</div>
+                <div class="founder-info"><h2>Sanchit Singh</h2><div class="startup">Redtrieve</div></div>
+                <div class="expand-icon">▼</div>
+            </div>
+            <div class="card-content">
+                <div class="year-badge">💡 Pivot Explorer</div>
+                <div class="stats-row">
+                    <div class="stat-box"><span class="number">Phase 1</span><div class="label">Delivered</div></div>
+                    <div class="stat-box"><span class="number">AI Kids</span><div class="label">Pivot</div></div>
+                </div>
+                <div class="highlight-section">
+                    <div class="highlight-title">🎉 Wins</div>
+                    <div class="highlight-item win">Delivered Phase 1 real estate website</div>
+                    <div class="highlight-item win">Identified AI knowledge gap market</div>
+                </div>
+                <div class="highlight-section">
+                    <div class="highlight-title">🎯 2026 Focus</div>
+                    <div class="highlight-item challenge">User interviews before building!</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <h2>Here's to 2026 🥂</h2>
+        <p>From first customers to institutional pilots - keep shipping, keep testing, keep learning.</p>
+        <p style="margin-top:20px;font-size:12px;opacity:0.6;">ZIP Launchpad In-Flight Cohort | LaunchMate System</p>
+    </div>
+
+    <script>
+        // ===== SCROLL PROGRESS BAR =====
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / scrollHeight) * 100;
+            document.getElementById('scrollProgress').style.width = progress + '%';
+        });
+
+        // ===== CARD TOGGLE =====
+        document.querySelectorAll('.founder-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const wasExpanded = this.classList.contains('expanded');
+                // Close all cards
+                document.querySelectorAll('.founder-card').forEach(c => c.classList.remove('expanded'));
+                // Toggle clicked card
+                if (!wasExpanded) {
+                    this.classList.add('expanded');
+                    // Animate counters when expanded
+                    this.querySelectorAll('.counter').forEach(counter => {
+                        animateCounter(counter);
+                    });
+                }
+            });
+        });
+
+        // ===== ANIMATED COUNTERS =====
+        function animateCounter(el) {
+            const target = parseInt(el.dataset.target);
+            const duration = 1500;
+            const start = 0;
+            const startTime = performance.now();
+            
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                const current = Math.floor(start + (target - start) * easeOut);
+                el.textContent = current;
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    el.textContent = target;
+                }
+            }
+            requestAnimationFrame(update);
+        }
+
+        // ===== FILTER TABS =====
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Update active tab
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filter = this.dataset.filter;
+                document.querySelectorAll('.founder-card').forEach(card => {
+                    if (filter === 'all') {
+                        card.classList.remove('hidden');
+                    } else {
+                        const tags = card.dataset.tags || '';
+                        if (tags.includes(filter)) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        });
+
+        // ===== SCROLL ANIMATIONS =====
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.founder-card').forEach(card => observer.observe(card));
+
+        // ===== CONFETTI =====
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        let confettiPieces = [];
+        let animationId = null;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Confetti {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = -20;
+                this.size = Math.random() * 10 + 5;
+                this.speedY = Math.random() * 3 + 2;
+                this.speedX = Math.random() * 4 - 2;
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = Math.random() * 10 - 5;
+                this.color = ['#667eea', '#764ba2', '#f093fb', '#00f5d4', '#38ef7d', '#ffd700', '#ff6b6b'][Math.floor(Math.random() * 7)];
+                this.opacity = 1;
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.rotation += this.rotationSpeed;
+                this.speedY += 0.05;
+                if (this.y > canvas.height - 100) {
+                    this.opacity -= 0.02;
+                }
+            }
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation * Math.PI / 180);
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
+                ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size);
+                ctx.restore();
+            }
+        }
+
+        function launchConfetti() {
+            for (let i = 0; i < 150; i++) {
+                setTimeout(() => {
+                    confettiPieces.push(new Confetti());
+                }, i * 10);
+            }
+            if (!animationId) animateConfetti();
+        }
+
+        function animateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            confettiPieces = confettiPieces.filter(p => p.opacity > 0);
+            confettiPieces.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            if (confettiPieces.length > 0) {
+                animationId = requestAnimationFrame(animateConfetti);
+            } else {
+                animationId = null;
+            }
+        }
+
+        // Launch confetti on page load for fun!
+        setTimeout(() => launchConfetti(), 1000);
+    </script>
+</body>
+</html>
